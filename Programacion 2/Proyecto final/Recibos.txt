@@ -1,0 +1,14 @@
+0001;20-05-2023;Pedro Perez;255000;Pereira;Papeleria;
+0002;21-05-2023;Mariana Giraldo;520000;Armenia;Equipo de Oficina;
+0003;21-05-2023;Paula Agudelo;150500;Bogota;Viaticos;
+0004;21-05-2023;Rodigo Duque;750250;Pereira;Viaticos;
+0005;21-06-2021;Marcela Moncada;213456;Bogota;Cacharreria;
+0006;22-05-2023;Camnilo Duarte;647850;Pereira;Almuerzo Grupo de trabajo;
+1212;23-05-2022;Efrain Zapata;876150;Palmira;Computador;
+0008;23-05-2023;Juliana Arango;12000;Pereira;Repuesto Fuente de poder;
+0009;23-04-2020;Juan Jose Rios;98000;Pereira;Viaticos;
+0010;23-05-2023;Mario Zuluaga;355550;Dosquebradas;Toner de Fotocopiadora;
+4321;12-12-2023;Cristhian;123468;Madrid;Viaje;
+5678;22-01-2020;Mariluz Mendez;999999999;Barcelona;Viaje a Barcelona;
+8888;04-12-2004;Sergio Moncada;1000;Pereira;Ahorro pension;
+3251;12-08-2020;Daniel Bedoya;124322;Pasto;Aguacate;

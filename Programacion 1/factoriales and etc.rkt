@@ -1,0 +1,20 @@
+#lang racket
+(define (fact n)
+  (if (> n 0)
+      (* n (fact(- n 1))) 1))
+
+(define (sumai n)
+  (if (> n 0)
+      (if (=(modulo n 2)1)
+          (+ n(sumai(- n 2)))
+          (sumai (- n 2)))
+      0)
+  )
+
+(define (suma7 n)
+  (if (>= n 7)
+      (if(=(modulo n 7)0)
+         (+ n(suma7 (- n 1)))
+         (suma7 (- n 1)))
+      0)
+  )

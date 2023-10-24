@@ -64,62 +64,8 @@ struct node *deleteFirstNodeInCircularDoublyLinkedList (struct node *tail)
     }
     return tail;
 }
-/*
-struct node * deleteElementOfCircularDoublyLinkedList ( struct node *tail , players element )
-{
-    struct node * actualNode ;
-    int flag = FALSE ;
-    if( tail == NULL )
-        printf (" The circular doubly linked list is empty .\n");
-    else
-    {
-        actualNode = tail -> next ;
-        while (( actualNode != tail ) && ( flag == FALSE ))
-        {
-            if( actualNode -> key.position == element.position)
-            {
-                flag = TRUE ;
-                break ;
-            }
-            else
-                actualNode = actualNode -> next ;
-        }
-        if( flag == FALSE )
-        {
-            if(tail->key.position == element.position)
-            {
-                flag = TRUE ;
-                actualNode = tail ;
-            }
-        }
-        if( tail == tail -> next )
-        {
-            if( flag == TRUE )
-            {
-                free ( tail ) ;
-                tail = NULL ;
-            }
-            else
-                printf (" The %d is not in the circular doubly linked list .\n", element.position);
-        }
-        else
-        {
-            if (flag == FALSE)
-                printf ("The %d is not in the circular doubly linked list .\n", element.position);
-            else
-            {
-                actualNode ->next -> prev = actualNode -> prev ;
-                actualNode ->prev -> next = actualNode -> next ;
-                if( actualNode == tail )
-                    tail = tail -> prev ;
-                free ( actualNode );
-            }
-        }
-    }
-    return tail ;
-} */
 
-/* typedef struct {
+typedef struct {
     int position, money;
 } queue;
 
@@ -192,18 +138,18 @@ void MinPQ_Insert (queue Q[], queue key, int *heapSize) {
     *heapSize = *heapSize + 1;
     Q[*heapSize].position = myPositiveInfinite;
     MinPQ_DecreaseKey(Q, *heapSize, key);
-} */
+}
 
 int main () {
-    int n, startingMoney, index, redDice, blueDice, diceIndex /*,heapSize*/;
+    int n, startingMoney, index, redDice, blueDice, diceIndex, heapSize;
     char direction;
     struct node *tail;
     tail = NULL;
     players newPlayer;
-    //queue Q [MAXT + 1], addPlayer, printPlayer;
+    queue Q [MAXT + 1], addPlayer, printPlayer;
     
     while (scanf ("%d %d", &n, &startingMoney) != EOF) {
-        //heapSize = 0;
+        heapSize = 0;
         
         for (index = 1; index <= n; index++) {
             newPlayer.position = index;
@@ -229,13 +175,15 @@ int main () {
                 tail->next->key.money += blueDice;
                 
                 if (tail->next->key.money % 2 == 1) {
-                    //addPlayer.position = tail->next->key.position;
-                    //addPlayer.money = tail->next->key.money;
-                    //MinPQ_Insert (Q, addPlayer, &heapSize);
+                    addPlayer.position = tail->next->key.position;
+                    addPlayer.money = tail->next->key.money;
+                    MinPQ_Insert (Q, addPlayer, &heapSize);
                     
-                    printf ("%d %d\n", tail->next->key.position, tail->next->key.money);
+                    //printf ("%d %d\n", tail->next->key.position, tail->next->key.money);
                     tail = deleteFirstNodeInCircularDoublyLinkedList (tail);
-                    tail = tail->next;
+                    
+                    if (direction == 'C')
+                       tail = tail->next;
                     
                 }
                 else {
@@ -243,21 +191,20 @@ int main () {
                     tail = deleteFirstNodeInCircularDoublyLinkedList (tail);
                     tail = tail->next;
                     tail = deleteFirstNodeInCircularDoublyLinkedList (tail);
-                }
-                
+                } 
             }   
         }
-        //addPlayer.position = tail->key.position;
-        //addPlayer.money = tail->key.money;
-        //MinPQ_Insert (Q, addPlayer, &heapSize);
-        printf ("%d %d\n", tail->key.position, tail->key.money);
+        addPlayer.position = tail->key.position;
+        addPlayer.money = tail->key.money;
+        MinPQ_Insert (Q, addPlayer, &heapSize);
+        //printf ("%d %d\n", tail->key.position, tail->key.money);
         free (tail);
         tail = NULL;
         
-        /*while (heapSize > 0) {
+        while (heapSize > 0) {
             printPlayer = MinPQ_Extract (Q, &heapSize);
             printf ("%d %d\n", printPlayer.position, printPlayer.money);
-        }*/
+        }
     }
     
     return 0;

@@ -189,8 +189,11 @@ int main () {
                 else {
                     tail = tail->prev;
                     tail = deleteFirstNodeInCircularDoublyLinkedList (tail);
-                    tail = tail->next;
-                    tail = deleteFirstNodeInCircularDoublyLinkedList (tail);
+                    if (tail != tail->next) {
+                        tail = tail->next;
+                        tail = deleteFirstNodeInCircularDoublyLinkedList (tail);
+                    }
+                    
                 } 
             }   
         }

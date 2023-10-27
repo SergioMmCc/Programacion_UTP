@@ -2,11 +2,8 @@
 #include <stdlib.h>
 #include <string.h>
 #include <math.h>
-#define TRUE 1
-#define FALSE 0
 #define myPositiveInfinite 2147483647
 #define myNegativeInfinite -2147483647
-#define MAXT 1000
 
 struct node
 {

@@ -1,6 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
+#define WHITE 2
+#define GRAY 1
+#define BLACK 0
+#define NIL -1
+#define myPositiveInfinite 2147483647
 #define MAXV 1005
 
 struct edge
@@ -90,6 +95,71 @@ struct graph *deleteGraph (struct graph *G) {
     return G;
 }
 
+void BFS (struct graph *G, int s, int color[], int d[], int pi[]) {
+    int u, v, Q[MAXV], head = 1, tail = 1;
+    struct edge *tempEdge;
+    
+    for (u = 1; u <= G->n_vertex; u++) {
+        color[u] = WHITE;
+        d[u] = myPositiveInfinite;
+        pi[u] = NIL;
+    }
+    
+    color[s] = GRAY;
+    d[s] = 0;
+    pi[s] = NIL;
+    Q[tail] = s;
+    tail++;
+    
+    while (head < tail) {
+        u = Q[head];
+        head++;
+        tempEdge = G->Adj[u];
+        
+        while (tempEdge != NULL) {
+            v = tempEdge->vertex;
+            
+            if (color[v] == WHITE) {
+                color[v] = GRAY;
+                d[v] = d[u] + 1;
+                pi[v] = u;
+                Q[tail] =v;
+                tail++;
+            }
+            tempEdge = tempEdge->next;
+        }
+        color[u] = BLACK;
+    }
+}
+
+void solver (struct graph *G, int s) {
+    int color[MAXV], d[MAXV], pi [MAXV], idVertex;
+    
+    BFS (G, s, color, d, pi);
+    
+    for (idVertex = 1; idVertex <= G->n_vertex; idVertex++) {
+        
+        if (color[idVertex] == WHITE)
+            printf ("color[%d] = WHITE\n", idVertex);
+        else if (color[idVertex] == GRAY)
+            printf ("color[%d] = GRAY\n", idVertex);
+        else
+            printf ("color[%d] = BLACK\n", idVertex);
+    }
+    printf ("\n");
+    
+    for (idVertex = 1; idVertex <= G->n_vertex; idVertex++) 
+        printf ("d[%d] = %d\n", idVertex, d[idVertex]);
+    printf ("\n");
+    
+    for (idVertex = 1; idVertex <= G->n_vertex; idVertex++) {
+        if (pi[idVertex] == NIL)
+            printf ("pi[%d] = NIL\n", idVertex);
+        else
+            printf ("pi[%d] = %d\n", idVertex, pi[idVertex]);
+    }
+}
+
 int main () {
     int vertices, edges;
     struct graph *G;
@@ -97,6 +167,7 @@ int main () {
     while (scanf ("%d %d", &vertices, &edges) != EOF) {
         G = readGraph (vertices, edges);
         printGraph (G);
+        solver (G, 5);
         G = deleteGraph (G);
         printGraph (G);
     }

@@ -9,6 +9,7 @@
 struct nodeRBTree {
     int key;
     int color;
+    int frequency;
     struct nodeRBTree *p;
     struct nodeRBTree *left;
     struct nodeRBTree *right;
@@ -177,6 +178,7 @@ struct nodeRBTree *RB_Insert (struct nodeRBTree *T, int k) {
     z = (struct nodeRBTree *) malloc (sizeof (struct nodeRBTree));
     z->color = RED;
     z->key = k;
+    z->frequency = 1;
     z->left = assignNilLeaf ();
     z->left->p = z;
     z->right = assignNilLeaf ();
@@ -299,6 +301,7 @@ struct nodeRBTree *RB_Delete (struct nodeRBTree *T, struct nodeRBTree *z)
 	if (y != z)
 	{
 		z->key = y->key;
+		z->frequency = y->frequency;
 		// Copy all information fields from y to z.
 	}
 	
@@ -311,6 +314,13 @@ struct nodeRBTree *RB_Delete (struct nodeRBTree *T, struct nodeRBTree *z)
 	free (y);
 	
 	return T;
+}
+
+struct nodeRBTree *deleteWholeRBTree (struct nodeRBTree *T) {
+    while (T->key != NILKey)
+        T = RB_Delete (T, T);
+    
+    return T;
 }
 
 int main () {

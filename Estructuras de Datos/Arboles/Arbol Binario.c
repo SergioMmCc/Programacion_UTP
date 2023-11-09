@@ -125,13 +125,6 @@ struct nodeTree *treeDelete(struct nodeTree *T, struct nodeTree *z)
 	return T;
 }
 
-struct nodeRBTree *deleteWholeRBTree (struct nodeRBTree *T) {
-    while (T->key != NILKey)
-        T = RB_Delete (T, T);
-    
-    return T;
-}
-
 int main () {
     int operation, element;
     struct nodeTree *z, *T;

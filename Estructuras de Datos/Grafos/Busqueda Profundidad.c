@@ -7,7 +7,7 @@
 #define BLACK 0
 #define NIL -1
 #define myPositiveInfinite 2147483647
-#define MAXV 1005
+#define MAXV 1000
 
 struct edge
 {
@@ -132,7 +132,7 @@ void DFS (struct graph *G, int d[], int f[], int color[], int pi[]) {
 
 
 void solver (struct graph *G) {
-    int color[MAXV], d[MAXV], f[MAXV + 1], pi [MAXV], idVertex;
+    int color[MAXV + 1], d[MAXV + 1], f[MAXV + 1], pi [MAXV + 1], idVertex;
     
     DFS (G, d, f, color, pi);
     

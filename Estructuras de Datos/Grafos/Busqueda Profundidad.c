@@ -20,7 +20,7 @@ struct graph
 {
     int n_vertex;
     int m_edges;
-    struct edge *Adj[MAXV];
+    struct edge *Adj[MAXV + 1];
 };
 
 struct graph *readGraph (int vertices, int edges) {

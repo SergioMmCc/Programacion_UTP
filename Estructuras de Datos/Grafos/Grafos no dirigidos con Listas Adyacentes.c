@@ -6,7 +6,7 @@
 #define BLACK 0
 #define NIL -1
 #define myPositiveInfinite 2147483647
-#define MAXV 1005
+#define MAXV 1000
 
 struct edge
 {
@@ -19,7 +19,7 @@ struct graph
 {
     int n_vertex;
     int m_edges;
-    struct edge *Adj[MAXV];
+    struct edge *Adj[MAXV + 1];
 };
 
 struct graph *readGraph (int vertices, int edges) {
@@ -96,7 +96,7 @@ struct graph *deleteGraph (struct graph *G) {
 }
 
 void BFS (struct graph *G, int s, int color[], int d[], int pi[]) {
-    int u, v, Q[MAXV], head = 1, tail = 1;
+    int u, v, Q[MAXV + 1], head = 1, tail = 1;
     struct edge *tempEdge;
     
     for (u = 1; u <= G->n_vertex; u++) {
@@ -133,7 +133,7 @@ void BFS (struct graph *G, int s, int color[], int d[], int pi[]) {
 }
 
 void solver (struct graph *G, int s) {
-    int color[MAXV], d[MAXV], pi [MAXV], idVertex;
+    int color[MAXV + 1], d[MAXV + 1], pi [MAXV + 1], idVertex;
     
     BFS (G, s, color, d, pi);
     

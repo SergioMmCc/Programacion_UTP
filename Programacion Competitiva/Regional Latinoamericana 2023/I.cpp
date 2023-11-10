@@ -32,17 +32,21 @@ int main () {
         right += rightFrequencies[saveLetter - 1];
     }
     
-    cout << right << "\n";
-    cout << left << "\n";
+    /*cout << right << "\n";
+    cout << left << "\n";*/
     
     if (n % 2 == 0) 
-        result = (((n/2)%m) * (((right*(n+1)) + (left*(n-1)))%m)) % m;
+        result = (((n/2)%m) * (((((right%m)*((n+1)%m))%m) + (((left%m)*((n-1)%m))%m)) %m))%m;
+        //result = (((n/2)%m) * (((right*(n+1)) + (left*(n-1)))%m)) % m;
     
     else
-        result = ((n%m) * ((((right*(n+1)) + (left*(n-1)))/2)%m)) % m;
+        //result = ((n%m) * ((((right*(n+1)) + (left*(n-1)))/2)%m)) % m;
+        
+        //result = ((n%m) * (((((right * (n+1))%m) + ((left*(n-1)) %m)) %m) /2)) %m; //Esta buena hasta aca
+        
+        result = ((n%m) * ((((((right%m) * ((n+1)%m))%m) + (((left%m) * ((n-1)%m)) %m)) %m) /2)) %m;
 
-    cout << result << "\n799008402\n";
+    cout << result << "\n";
 
     return 0;
 }
-

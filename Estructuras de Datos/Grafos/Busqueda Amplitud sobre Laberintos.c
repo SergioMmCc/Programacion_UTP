@@ -2,8 +2,8 @@
 #include <stdlib.h>
 #include <string.h>
 #include <math.h>
-#define MAXH 105
-#define MAXW 105
+#define MAXH 100
+#define MAXW 100
 #define WHITE 2
 #define GRAY 1
 #define BLACK 0
@@ -16,8 +16,8 @@ struct cell
     int coord_y;
 };
 
-struct cell readMaze (char maze[][MAXW], int W, int H) {
-    char line [MAXW];
+struct cell readMaze (char maze[][MAXW + 1], int W, int H) {
+    char line [MAXW + 1];
     int idRow, idColumn;
     struct cell source;
     
@@ -38,7 +38,7 @@ struct cell readMaze (char maze[][MAXW], int W, int H) {
     return source;
 }
 
-void printMaze (char maze[][MAXW], int W, int H) {
+void printMaze (char maze[][MAXW + 1], int W, int H) {
     int idRow, idColumn;
     printf ("\nThe original maze without source position:\n\n");
     
@@ -63,11 +63,11 @@ void initializerMovements (struct cell movements[]) {
     movements[4].coord_y = 0;
 }
 
-void BFS_Maze (char maze[][MAXW], int W, int H, struct cell source, 
-                int color[][MAXW], int d[][MAXW], struct cell pi[][MAXW])
+void BFS_Maze (char maze[][MAXW + 1], int W, int H, struct cell source, 
+                int color[][MAXW + 1], int d[][MAXW + 1], struct cell pi[][MAXW + 1])
 {
     int idRow, idColumn, head = 1, tail = 1, idMovement;
-    struct cell NILFather, Q[MAXH * MAXW], u, v, movements[5];
+    struct cell NILFather, Q[H * W], u, v, movements[5];
     
     initializerMovements (movements);
     NILFather.coord_x = NIL;
@@ -111,28 +111,28 @@ void BFS_Maze (char maze[][MAXW], int W, int H, struct cell source,
     }
 }
 
-void solver (char maze[][MAXW], int W, int H, struct cell source) {
-    int color[MAXH][MAXW], d[MAXH][MAXW], idRow, idColumn;
-    struct cell pi[MAXH][MAXW];
+void solver (char maze[][MAXW + 1], int W, int H, struct cell source) {
+    int color[MAXH + 1][MAXW + 1], d[MAXH + 1][MAXW + 1], idRow, idColumn;
+    struct cell pi[MAXH + 1][MAXW + 1];
     
     BFS_Maze (maze, W, H, source, color, d, pi);
     
     printf ("Colors:\n");
-    for (idRow = 1; idRow <= W; idRow++) {
+    for (idRow = 1; idRow <= H; idRow++) {
         for (idColumn = 1; idColumn <= W; idColumn++) {
             if (color[idRow][idColumn] == WHITE)
-                printf ("W");
+                printf (" W");
             if (color[idRow][idColumn] == GRAY)
-                printf ("G");
+                printf (" G");
             if (color[idRow][idColumn] == BLACK)
-                printf ("B");
+                printf (" B");
         }
         printf ("\n");
     }
     printf ("\n");
     
     printf ("Distances:\n");
-    for (idRow = 1; idRow <= W; idRow++) {
+    for (idRow = 1; idRow <= H; idRow++) {
         for (idColumn = 1; idColumn <= W; idColumn++) 
             printf ("%d ", d[idRow][idColumn]);
             
@@ -141,7 +141,7 @@ void solver (char maze[][MAXW], int W, int H, struct cell source) {
     printf ("\n");
     
     printf ("Fathers:\n");
-    for (idRow = 1; idRow <= W; idRow++) {
+    for (idRow = 1; idRow <= H; idRow++) {
         for (idColumn = 1; idColumn <= W; idColumn++) 
             printf ("[%d, %d] ", 
                     pi[idRow][idColumn].coord_y, 
@@ -153,7 +153,7 @@ void solver (char maze[][MAXW], int W, int H, struct cell source) {
 }
 
 int main () {
-    char maze[MAXH][MAXW];
+    char maze[MAXH + 1][MAXW + 1];
     int T, W, H, idCase;
     struct cell source;
     

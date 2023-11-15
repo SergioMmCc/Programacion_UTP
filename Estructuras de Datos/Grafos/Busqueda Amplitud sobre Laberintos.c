@@ -117,39 +117,63 @@ void solver (char maze[][MAXW + 1], int W, int H, struct cell source) {
     
     BFS_Maze (maze, W, H, source, color, d, pi);
     
-    printf ("Colors:\n");
-    for (idRow = 1; idRow <= H; idRow++) {
-        for (idColumn = 1; idColumn <= W; idColumn++) {
-            if (color[idRow][idColumn] == WHITE)
-                printf (" W");
-            if (color[idRow][idColumn] == GRAY)
-                printf (" G");
-            if (color[idRow][idColumn] == BLACK)
-                printf (" B");
+printf("Matrix of colors:\n\n");
+    for(idRow=1; idRow<=H; idRow++)
+    {
+        for(idColumn=1; idColumn <= W; idColumn++)
+        {
+            if(color[idRow][idColumn] == WHITE)
+                printf(" W");
+            if(color[idRow][idColumn] == GRAY)
+                printf(" G");
+            if(color[idRow][idColumn] == BLACK)
+                printf(" B");
         }
-        printf ("\n");
+        printf("\n");
     }
-    printf ("\n");
-    
-    printf ("Distances:\n");
-    for (idRow = 1; idRow <= H; idRow++) {
-        for (idColumn = 1; idColumn <= W; idColumn++) 
-            printf ("%d ", d[idRow][idColumn]);
-            
-        printf ("\n");
+    printf("\n");
+
+    printf("Matrix of distances:\n\n");
+    for(idRow=1; idRow<=H; idRow++)
+    {
+        for(idColumn=1; idColumn<=W; idColumn++)
+        {
+            if(d[idRow][idColumn] == myInfinite)
+                printf(" IN");
+            else
+            {
+                if(d[idRow][idColumn] < 10)
+                    printf("  %d", d[idRow][idColumn]);
+                else
+                    printf(" %d", d[idRow][idColumn]);
+            }
+        }
+        printf("\n");
     }
-    printf ("\n");
-    
-    printf ("Fathers:\n");
-    for (idRow = 1; idRow <= H; idRow++) {
-        for (idColumn = 1; idColumn <= W; idColumn++) 
-            printf ("[%d, %d] ", 
-                    pi[idRow][idColumn].coord_y, 
-                    pi[idRow][idColumn].coord_x);
-            
-        printf ("\n");
+    printf("\n");
+
+    printf("Matrix of fathers:\n\n");
+    for(idRow=1; idRow<=H; idRow++)
+    {
+        for(idColumn=1; idColumn<=W; idColumn++)
+        {
+            if(pi[idRow][idColumn].coord_x == NIL)
+                printf(" [ -1, -1]");
+            else
+            {
+                if(pi[idRow][idColumn].coord_x < 10)
+                    printf(" [  %d,", pi[idRow][idColumn].coord_x);
+                else
+                    printf(" [ %d,", pi[idRow][idColumn].coord_x);
+                if(pi[idRow][idColumn].coord_y < 10)
+                    printf("  %d]", pi[idRow][idColumn].coord_y);
+                else
+                    printf(" %d]", pi[idRow][idColumn].coord_y);
+            }
+        }
+        printf("\n");
     }
-    printf ("\n");
+    printf("\n");
 }
 
 int main () {

@@ -237,14 +237,13 @@ void dijkstra (struct graph *G, int d[], int pi[], int s) {
 
 
 void solver(struct graph *G, int source) {
-    int d[MAXV + 1], pi[MAXV + 1], idVertex, weightMST = 0;
+    int d[MAXV + 1], pi[MAXV + 1], idVertex;
     dijkstra (G, d, pi, source);
 
     printf("\n");
-    for(idVertex = 1; idVertex <= G->n_vertex; idVertex++) {
+    for(idVertex = 1; idVertex <= G->n_vertex; idVertex++) 
         printf("d[%d]: %d\n", idVertex, d[idVertex]);
-        weightMST += d[idVertex];
-    }
+    
     printf("\n");
 
     for(idVertex = 1; idVertex <= G->n_vertex; idVertex++) {

@@ -114,7 +114,7 @@ int extractMin (int d[], int inQueue[], int n) {
 }
 
 void prim (struct graph *G, int d[], int pi[], int s) {
-    int idVertex, u, v, w, Q[MAXV + 1], inQueue[MAXV + 1];
+    int idVertex, u, v, w, inQueue[MAXV + 1];
     int totalElementsInQueue = G->n_vertex;
     struct edge *tempEdge;
     

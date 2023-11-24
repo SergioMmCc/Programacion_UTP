@@ -5,8 +5,6 @@
 #define MAXV 100000
 #define myInfinite 9223372036854775807
 #define NIL -1
-#define TRUE 1
-#define FALSE 0
 
 struct edge {
     int vertex;

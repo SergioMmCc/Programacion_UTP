@@ -5,8 +5,6 @@
 #define MAXV 10000
 #define myInfinite 2147483647
 #define NIL -1
-#define TRUE 1
-#define FALSE 0
 
 struct edge {
     int vertex;
@@ -196,12 +194,11 @@ struct graph *deleteGraph(struct graph *G) {
 void dijkstra (struct graph *G, int d[], int pi[], int s) {
 	int u, v, w, heapSize = 0;
 	struct nodePQ Q[MAXV + 1];
-	int positionVertex[MAXV + 1], inQueue[MAXV + 1];
+	int positionVertex[MAXV + 1];
 	struct edge *tempEdge;
 
 	for(u = 1; u <= G->n_vertex; u++) {
 		pi[u] = NIL;
-		inQueue[u] = TRUE;
 
 		if(u == s) {
 			MinPQ_Insert(Q, 0, s, &heapSize, positionVertex);
@@ -215,7 +212,6 @@ void dijkstra (struct graph *G, int d[], int pi[], int s) {
 
 	while(heapSize >= 1) {
 		u = MinPQ_Extract(Q, &heapSize, positionVertex);
-		inQueue[u] = FALSE;
 
 		if(d[u] == myInfinite)
 			break;

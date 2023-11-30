@@ -117,11 +117,9 @@ void solver (char maze[][MAXW + 1], int W, int H, struct cell source) {
     
     BFS_Maze (maze, W, H, source, color, d, pi);
     
-printf("Matrix of colors:\n\n");
-    for(idRow=1; idRow<=H; idRow++)
-    {
-        for(idColumn=1; idColumn <= W; idColumn++)
-        {
+    printf("Matrix of colors:\n\n");
+    for(idRow=1; idRow<=H; idRow++) {
+        for(idColumn=1; idColumn <= W; idColumn++) {
             if(color[idRow][idColumn] == WHITE)
                 printf(" W");
             if(color[idRow][idColumn] == GRAY)

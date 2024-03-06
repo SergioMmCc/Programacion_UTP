@@ -12,9 +12,8 @@ entity lab3sop is
 end entity;
 
 Architecture arq_lab3sop of lab3sop is
+  signal S1, S2, S3, S4, S5, S6, S7, S8 : std_logic;
   Begin
-  
-  signal S1, S2, S3, S4, S5, S65, S7, S8 : std_logic;
   
   S1 <= (not A) and B and C and D;
   S2 <= A and (not B) and (not C) and D;

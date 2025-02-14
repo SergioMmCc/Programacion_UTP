@@ -1,3 +1,5 @@
+import random
+
 # 1. Realice un algoritmo para sumar los valores numéricos de la
 # siguiente lista sin ordenarla:
 
@@ -9,7 +11,7 @@ def primero():
         if isinstance(elemento, int):
             suma += elemento
 
-    print(suma)
+    print(f"La suma total es: {suma}")
 
 # 2. Dada la siguiente lista, Una todas las palabras de la lista en 
 # una sola cadena separadas por espacio o algún carácter especial.
@@ -124,10 +126,81 @@ def sexto():
         if len(palabra) == longitud:
             print(palabra)
 
+# 7. Realizar un programa que pida al usuario un carácter, luego se
+# debe mostrar las cadenas que contengan dicho carácter
+def septimo():
+    Lista = ["oso", "casa2", "murciélago", "ventana", "programación", 
+             "objetos", "listas", "métodos", "utp"]
+    caracter = input("Ingrese un caracter: ")
+    palabrasConCaracter = []
+    for palabra in Lista:
+        if caracter in palabra:
+            print(f"{palabra}", end = "")
+            if len(palabra) % 2:
+                print(" -> impar")
+            else:
+                print(" -> par")
+    
+# 8. Realizar un programa que haga conteo de todos los caracteres
+# que no sean vocales en una lista de 10 cadenas.
+def octavo():
+    vocales = "aeiouAEIOU"
+    cuenta = 0
+    for indexCadena in range(1, 11):
+        cadena = input(f"Ingrese la cadena {indexCadena}: ")
+        for letra in cadena:
+            if letra not in vocales:
+                cuenta += 1
+    
+    print(f"La lista tiene {cuenta} caracteres que no son consonantes")
+
+# 9. Realizar un programa que inicialice una lista con 15 valores
+# aleatorios y posteriormente muestre en pantalla cada elemento
+# de la lista junto con su cuadrado y su cubo.
+def noveno():
+    Lista = [random.randint(1, 100) for _ in range(15)]
+    for numero in Lista:
+        print(f"numero: {numero}, \t al cuadrado: {numero*numero}, \t al cubo: {numero*numero*numero}")
+
+# 10. Elabore un programa para ingresar la siguiente lista.
+# Lista= [“casa”, “programación”, “utp”, “universidad”, “utp, “casa”,
+# “casa”,” thj”, “vbh”, “456”, “987”]
+# a. Borre los elementos repetidos que tengamos en la lista
+# b. Borre las cadenas que NO contengan vocales.
+# c. Ordene la lista en orden alfabético respecto al primer
+# elemento de la cadena.
+def decimo():
+    Lista= ["casa", "programación", "utp", "universidad", "utp", "casa",
+            "casa", "thj", "vbh", "456", "987"]
+    vocales = "aeiouAEIOU"
+
+    sinRepetidos = set(Lista)
+    listaAuxiliar = []
+    for cadena in sinRepetidos:
+        tieneVocales = 0
+        for caracter in cadena:
+            if caracter in vocales:
+                tieneVocales = 1
+        if not tieneVocales:
+            listaAuxiliar.append(cadena)
+
+    for cadena in listaAuxiliar:
+        sinRepetidos.remove(cadena)
+    
+    listaOrdenada = list(sinRepetidos)
+    listaOrdenada = sorted(listaOrdenada)
+
+    print("Lista despues del proceso: ")
+    for elemento in listaOrdenada:
+        print(elemento)
 
 # primero()
 # segundo()
 # tercero()
 # cuarto()
 # quinto()
-sexto()
+# sexto()
+# septimo()
+# octavo()
+# noveno()
+decimo()

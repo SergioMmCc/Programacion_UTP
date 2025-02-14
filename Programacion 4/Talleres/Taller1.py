@@ -1,4 +1,5 @@
 import random
+import os
 
 # 1. Realice un algoritmo para sumar los valores numéricos de la
 # siguiente lista sin ordenarla:
@@ -121,9 +122,16 @@ def sexto():
     Lista = ["oso", "casa2", "murciélago", "ventana", "programación", 
              "objetos", "listas", "métodos", "utp"]
     longitud = int(input("Ingrese la longitud de las palabras que quiera ver: "))
-    print(f"Las palabras de longitud {longitud} son: ")
+    palabrasLongitud = []
     for palabra in Lista:
         if len(palabra) == longitud:
+            palabrasLongitud.append(palabra)
+
+    if not len(palabrasLongitud):
+        print(f"No hay ninguna palabra con longitud {longitud}")
+    else:
+        print(f"Las palabras de longitud {longitud} son: ")
+        for palabra in palabrasLongitud:
             print(palabra)
 
 # 7. Realizar un programa que pida al usuario un carácter, luego se
@@ -194,13 +202,38 @@ def decimo():
     for elemento in listaOrdenada:
         print(elemento)
 
-# primero()
-# segundo()
-# tercero()
-# cuarto()
-# quinto()
-# sexto()
-# septimo()
-# octavo()
-# noveno()
-decimo()
+# Menú de opciones
+def menu():
+    continuar = 1
+    while continuar == 1:
+        os.system('cls' if os.name == 'nt' else 'clear')
+
+        opcion = int(input("Ingrese un numero del 1 al 10 segun el punto que desea analizar: "))
+        if opcion == 1:
+            primero()
+        elif opcion == 2:
+            segundo()
+        elif opcion == 3:
+            tercero()
+        elif opcion == 4:
+            cuarto()
+        elif opcion == 5:
+            quinto()
+        elif opcion == 6:
+            sexto()
+        elif opcion == 7:
+            septimo()
+        elif opcion == 8:
+            octavo()
+        elif opcion == 9:
+            noveno()
+        elif opcion == 10:
+            decimo()
+        else:
+            print("Ingrese una opción valida")
+            continue
+
+        continuar = int(input("\nIngrese 1 si desea volver al menu, otro numero para salir del programa: "))
+
+# Llamado al menú
+menu()

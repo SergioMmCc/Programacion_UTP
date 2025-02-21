@@ -1,0 +1,139 @@
+$date
+	Thu Feb 20 20:57:26 2025
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	100ps
+$end
+$scope module kb_controller_tb $end
+$var wire 8 ! leds_tb [7:0] $end
+$var reg 1 " ps2_clk_tb $end
+$var reg 1 # ps2_data_tb $end
+$scope module ps2 $end
+$var wire 1 " ps2_clk $end
+$var wire 1 # ps2_data $end
+$var reg 8 $ aux [7:0] $end
+$var reg 4 % count [3:0] $end
+$var reg 8 & leds [7:0] $end
+$var reg 1 ' paridad $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+x'
+bx &
+b1011 %
+bx $
+1#
+1"
+bx !
+$end
+#500
+b0 !
+b0 &
+0"
+#1000
+1"
+#1500
+0"
+#2000
+1"
+#2250
+0#
+#2500
+1'
+b1 %
+0"
+#3000
+1"
+#3250
+1#
+#3500
+b10 %
+0'
+bx1 $
+0"
+#4000
+1"
+#4250
+0#
+#4500
+b11 %
+bx01 $
+0"
+#5000
+1"
+#5500
+b100 %
+bx001 $
+0"
+#6000
+1"
+#6250
+1#
+#6500
+b101 %
+1'
+bx1001 $
+0"
+#7000
+1"
+#7250
+0#
+#7500
+b110 %
+bx01001 $
+0"
+#8000
+1"
+#8500
+b111 %
+bx001001 $
+0"
+#9000
+1"
+#9250
+1#
+#9500
+b1000 %
+0'
+bx1001001 $
+0"
+#10000
+1"
+#10250
+0#
+#10500
+b1001 %
+b1001001 $
+0"
+#11000
+1"
+#11250
+1#
+#11500
+b1010 %
+0"
+#12000
+1"
+#12500
+b1011 %
+0"
+#13000
+1"
+#13500
+0"
+#14000
+1"
+#14500
+0"
+#15000
+1"
+#15500
+0"
+#16000
+1"
+#16250

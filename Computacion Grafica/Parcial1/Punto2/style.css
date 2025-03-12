@@ -1,0 +1,113 @@
+/* Sergio Moncada Muñoz */
+/* Miguel Angel Alzate */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    display: grid;
+    grid-gap: 0;
+    grid-template-areas:"H H H H H"
+                        "A M M M M"                             
+                        "A M M M M"                           
+                        "F F F F F";
+}
+
+/* Header styles */
+header {
+    background-color: #0000d4;
+    color: #ffffff;
+    margin: 0;
+    text-align: center;
+    grid-area: H;
+}
+
+/* Navigation styles */
+nav {
+    display: flex;
+    justify-content: center;
+    background-color: #000080;
+}
+nav a {
+    list-style: none;
+    color: #fff;
+    padding: 14px 20px;
+    text-decoration: none;
+    text-align: center;
+    display: inline-block;
+}
+
+nav a:hover {
+    background-color: #555;
+}
+
+/* Main content styles */
+main {
+    padding: 40px;
+    margin: 20px 20px 80px 20px;
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: 1fr 1fr;
+    grid-area: M;
+}
+
+article h2 a{
+    color: #000000;
+    text-decoration: none;
+}
+
+article h2 a:hover{
+    text-decoration: underline;
+}
+
+/* Footer styles */
+footer {
+    background-color: #000080;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    grid-area: F;
+}
+
+/* Aside styles */
+aside {
+    background-color: #ddd;
+    padding: 20px;
+    grid-area: A;
+}
+
+aside h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+aside ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+aside ul li {
+    margin-bottom: 20px;
+}
+
+aside ul li a {
+    text-decoration: none;
+    color: #000000;
+}
+
+aside ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Imagenes */
+img {
+    width: 90%;
+    height: 600px;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto;
+}

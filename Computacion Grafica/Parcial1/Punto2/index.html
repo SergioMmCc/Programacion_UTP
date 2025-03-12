@@ -1,0 +1,66 @@
+<!-- 2. Un cliente requiere que crees la estructura HTML5 de una web de
+noticias. El código debe ser semántico y accesible.
+El código debe incluir un header, una barra de navegación (nav), una
+sección de noticias (main con varios article), una barra lateral (aside) y
+un footer.
+Aplique los estilos que considere para mejorar la apariencia de la
+pagina como: fuentes, colores, flexbox, grid, entre otros. -->
+
+<!-- Sergio Moncada Muñoz -->
+<!-- Miguel Angel Alzate -->
+
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <title> Colombia al Día</title>
+        <link href="style.css" rel="stylesheet">
+        <link href="./imagenes/logo.ico" rel="icon" type="image/x-icon" sizes="32x32"/>
+    </head>
+    <body>
+        <header>
+            <h1> Colombia al Día </h1>
+            <nav>
+                <a href="#"> Inicio </a>
+                <a href="#"> Deportes </a>
+                <a href="#"> Entretenimiento </a>
+                <a href="#"> Economía </a>
+                <a href="#"> Tecnología </a>
+            </nav>
+        </header>
+        <main>
+            <article>
+                <h2><a href="#"> Barcelona a Cuartos de Final </a></h2>
+                <p> El cuadro culé se clasifica a la siguiente etapa de la UEFA Champions League tras vencer 3-1 al Benfica en una nueva exhibición de Lamine Yamal y Raphinha. </p>
+                <img src="./imagenes/barca.jpg" alt="Lamine Yamal y Raphinha celebrando">
+            </article>
+            <article>
+                <h2><a href="#"> Continua el juicio de Uribe </a></h2>
+                <p> La tercera semana del juicio contra el expresidente Álvaro Uribe empezó este martes con la continuación del testimonio de Luz Mireya López. </p>
+                <img src="./imagenes/Uribe.jpg" alt="Alvaro Uribe">
+            </article>
+            <article>
+                <h2><a href="#"> WestCol vs TheGrefg </a></h2>
+                <p> El reconocido streamer colombiano se enfrentará en la velada del año contra otro de los grandes. </p>
+                <img src="./imagenes/westcol.jpg" alt="WestCol y TheGrefg">
+            </article>
+            <article>
+                <h2><a href="#"> Paulina Vega presentó a su esposo y su hija </a></h2>
+                <p> La barranquillera sorprendió a todos sus seguidores contando que no solo esta casada sino que además acaba de tener una hija. </p>
+                <img src="./imagenes/paulina.jpg" alt="Imagen de la noticia">
+            </article>
+        </main>
+        <aside>
+            <h2> Noticias de interés </h2>
+            <ul>
+                <li> <a href="#"> Barcelona avanza </a> </li>
+                <li> <a href="#"> Juicio a Uribe continúa </a> </li>
+                <li> <a href="#"> WestCol en la velada del año </a> </li>
+                <li> <a href="#"> Paulina Vega sorprende </a> </li>
+            </ul>
+        </aside>
+        <footer>
+            <p> Colombia al Día - 2025 </p>
+        </footer>
+    </body>
+</html>

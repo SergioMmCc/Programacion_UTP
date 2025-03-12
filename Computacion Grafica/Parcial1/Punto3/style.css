@@ -1,0 +1,204 @@
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Estilos header */
+header {
+    display: grid;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: #000074;
+    grid-template-areas: "L T T LOG"
+                         "L N N N";
+}
+header img {
+    width: 300px;
+    height: 80px;
+    grid-area: L;
+}
+header h1 {
+    margin: 0;
+    grid-area: T;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+}
+header .buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    grid-area: LOG;
+}
+header .buttons a {
+    padding: 20px 20px;
+    background-color: #0000A4;
+    border-radius: 10%;
+    color: #ffffff;
+    text-decoration: none;
+}
+header .buttons a:hover {
+    background-color: #0000D4;
+}
+
+/* Estilos nav */
+nav {
+    display: grid;
+    background-color: #000074;
+    padding: 10px;
+    margin: 10px;
+    grid-area: N;
+    grid-template-areas: "INF INF S";
+}
+.informacion{
+    display: flex;
+    justify-content: center;
+    grid-area: INF;
+}
+.informacion button{
+    background-color: #0000A4;
+    padding: 10px 40px;
+    margin: 10px;
+    color: #ffffff;
+    border-radius: 10%;
+}
+.informacion button:hover{
+    background-color: #0000D4;
+}
+nav .search {
+    display: flex;
+    justify-content: end;
+    padding: 10px;
+    grid-area: S;
+}
+nav .search input {
+    padding: 5px;
+    width: 200px;
+    border-radius: 5px;
+    border: none;
+    margin-right: 10px;
+}
+nav .search button {
+    padding: 5px 10px;
+}
+
+/* Estilos main */
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+main .advertisement {
+    width: 80%;
+    height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+main .advertisement img {
+    width: 100%;
+    height: 100%;
+}
+
+/* Estilos footer */
+footer {
+    background-color: #000074;
+    color: #ffffff;
+    text-align: center;
+    padding: 100px 0;
+    width: 100%;
+}
+
+/* -------------------------------------------------------------------------------------- */
+/* Estilos del componente login */
+#contenido{
+    display: grid;
+    grid-template-areas: "A M M M M M";
+}
+
+#contenido aside{
+    grid-area: A;
+}
+aside .publicidad{
+    width: 100%;
+    height: 600px;
+}
+aside .publicidad img{
+    width: 100%;
+    height: 100%;
+}
+#contenido main{
+    grid-area: M;
+}
+
+.registro {
+    position: absolute;
+    right: 0;
+    margin: 20px;
+}
+.registro a {
+    padding: 10px 20px;
+    background-color: #0000A4;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 10%;
+}
+.registro a:hover {
+    background-color: #0000D4;
+}
+
+.login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 20px;
+    margin: 100px;
+}
+#contrasena{
+    margin: 10px;
+}
+#correo{
+    margin: 10px;
+}
+
+form input{
+    padding: 5px;
+    width: 200px;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.olvidar{
+    display: flex;
+    justify-content: center;
+}
+.olvidar a{
+    text-decoration: none;
+    color: #0000A4;
+}
+.olvidar a:hover{
+    text-decoration: underline;
+}
+
+.ingresar{
+    display: flex;
+    justify-content: center;
+}
+.ingresar a{
+    padding: 10px 20px;
+    background-color: #0000A4;
+    color: #ffffff;
+    border-radius: 10%;
+    text-decoration: none;
+    text-align: center;
+}
+.ingresar a:hover{
+    background-color: #0000D4;
+}

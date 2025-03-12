@@ -1,0 +1,171 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    width: 100%;
+    padding: 10px 20px;
+}
+
+.main-content {
+    display: flex;
+    align-items: center;
+}
+
+.cuadro1, .middlecircle, .cuadro2 {
+    height: 100px;
+    width: 100px;
+    margin: 10px;
+    display: inline-block;
+}
+
+.cuadro1{
+
+    background-color: #fa8072;
+    border: 2px solid black;
+    border-radius: 10px;
+}
+.middlecircle{
+    background-color: rgb(80,51,90);
+    border-radius: 50%;
+    border: 2px solid black;
+}
+.cuadro2{
+    background-color: #59c441;
+    border: 2px solid black;
+}
+
+.square-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0 ;
+}
+
+.cuadrocentral1, .cuadrocentral2 {
+    width: 200px;
+    height: 200px;
+    margin: 10px 10px;
+    position: relative;
+    background-color: rgb(85, 134, 225);
+}
+
+.inner-square {
+    width: 150px;
+    height: 150px;
+    background-color: rgb(39, 210, 107);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.cuadrocentral3 {
+    width: 100px;
+    height: 100px;
+    background-color: rgb(225, 85, 85);
+    position: absolute;
+    top: 50px; /* Ajusta esta posición según sea necesario */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1; /* Asegura que esté sobre los otros cuadrados */
+}
+
+.cuadroLateral {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 225px;
+    width: 20%;
+    background-color: rgb(238, 223, 24);
+    border: #ffae00 2px solid;
+    margin: 10px;
+}
+
+.Leftshape1, .Leftshape2, .Leftshape3 {
+    width: 80px;
+    margin-bottom: 10px; /* Espacio entre los elementos */
+}
+
+.Leftshape1 {
+    height: 60px;
+    background-color: rgb(230, 222, 112);
+    border: black 2px solid;
+    border-radius: 30% 0% 30% 0% / 30% 0% 30% 0%;
+}
+
+.Leftshape2 {
+    height: 60px;
+    background-color: rgb(112, 187, 230);
+    border: black 2px solid;
+    transform: rotate(45deg);
+}
+
+.Leftshape3 {
+    height: 60px;
+    background-color: rgb(122, 73, 32);
+    border: black 2px solid;
+    border-radius: 0% 30% 0% 30% / 0% 30% 0% 30%;
+    box-shadow: 5px 10px 8px #888888;
+}
+
+.Rightshape1 {
+    height: 50px;
+    width: 70px;
+    background-color: rgb(74, 8, 118);
+    border: black 2px solid;
+    border-radius: 50%;
+}
+
+.Rightshape2 {
+    height: 60px;
+    width: 70px;
+    background-color: rgb(11, 179, 216);
+    border: black 2px solid;
+    box-shadow: 5px 10px 8px #888888;
+}
+
+.Rightshape3 {
+    height: 60px;
+    width: 70px;
+    background-color: rgb(255, 123, 0);
+    border: black 2px solid;
+    border-radius: 15%;
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.cuadroInferior1, .cuadroInferior2, .cuadroInferior3 {
+    height: 100px;
+    width: 100px;
+    margin: 10px;
+    border: black 2px solid;
+}
+
+.cuadroInferior1 {
+    background-color: #59c441;
+    border-radius: 10px;
+}
+
+.cuadroInferior2 {
+    background-color: #de0c6e;
+    transform: rotate(30deg);
+}
+
+.cuadroInferior3 {
+    background-color: #2150c8;
+}

@@ -158,14 +158,14 @@ aside .publicidad img{
     align-items: center;
     justify-content: center;
     gap: 10px;
-    padding: 20px;
-    margin: 100px;
+    padding: 10px;
+    margin: 100px 100px 20px 100px;
 }
-#contrasena{
-    margin: 10px;
+#contrasena, #confirmar{
+    margin: 5px;
 }
 #correo{
-    margin: 10px;
+    margin: 5px;
 }
 
 form input{
@@ -173,6 +173,15 @@ form input{
     width: 200px;
     border-radius: 5px;
     margin-right: 10px;
+}
+
+.texto{
+    padding: 5px;
+}
+
+#fecha_nacimiento input{
+    border-radius: 5px;
+    color: gray
 }
 
 .olvidar{

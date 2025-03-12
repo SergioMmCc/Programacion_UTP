@@ -10,13 +10,13 @@ header {
     display: grid;
     align-items: center;
     justify-content: space-between;
-    padding: 10px;
+    padding: 30px 10px 10px 10px;
     background-color: #000074;
     grid-template-areas: "L T T LOG"
                          "L N N N";
 }
 header img {
-    width: 300px;
+    width: 350px;
     height: 80px;
     grid-area: L;
 }
@@ -26,7 +26,9 @@ header h1 {
     color: #ffffff;
     display: flex;
     justify-content: center;
+    text-indent: 60px;
 }
+
 header .buttons {
     display: flex;
     justify-content: center;
@@ -42,6 +44,16 @@ header .buttons a {
 }
 header .buttons a:hover {
     background-color: #0000D4;
+}
+#pfp{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin: 10px;
+}
+
+.ocultar{
+    visibility: hidden;
 }
 
 /* Estilos nav */

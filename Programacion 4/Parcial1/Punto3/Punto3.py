@@ -50,11 +50,12 @@ class Tienda:
 
     def agregar_producto(self, producto): #Metodo para agregar un producto a la tienda.
         # Verificar si el producto ya existe por su ID
-        if any(p.id_producto == producto.id_producto for p in self.productos):
-            print(f"Error: Ya existe un producto con ID {producto.id_producto}.")
-        else:
-            self.productos.append(producto)
-            print(f"Producto '{producto.nombre}' agregado.")
+        for p in self.productos:
+            if p.id_producto == producto.id_producto:
+                print(f"Error: Ya existe un producto con ID {producto.id_producto}.")
+                return
+        self.productos.append(producto)
+        print(f"Producto '{producto.nombre}' agregado.")
 
     def agregar_cliente(self, cliente): #Agregar un cliente a la tienda.
         # Verificar si el cliente ya existe por su ID
@@ -108,7 +109,7 @@ class Tienda:
                 cliente.mostrar_informacion()
 
     def guardar_datos(self, archivo):
-        with open(archivo, "a") as f:
+        with open(archivo, "w") as f:
             # Guardar productos
             f.write("PRODUCTOS:\n")
             for producto in self.productos:
@@ -119,7 +120,7 @@ class Tienda:
             for cliente in self.clientes:
                 f.write(f"{cliente.nombre},{cliente.id_cliente},{cliente.saldo}\n")
 
-        print(f"Datos guardados en '{archivo}'.")
+        print(f"\nDatos guardados en '{archivo}'.")
 
 
     def cargar_datos(self, archivo):
@@ -141,14 +142,14 @@ class Tienda:
                 if modo == "productos":
                     nombre, id_producto, precio, cantidad = linea.split(",")
                     nuevo_producto = Producto(nombre, int(id_producto), float(precio), int(cantidad))
-                    self.agregar_producto(nuevo_producto)
+                    self.productos.append(nuevo_producto)
 
                 elif modo == "clientes":
                     nombre, id_cliente, saldo = linea.split(",")
                     nuevo_cliente = Cliente(nombre, int(id_cliente), float(saldo))
-                    self.agregar_cliente(nuevo_cliente)
+                    self.clientes.append(nuevo_cliente)
 
-            print(f"Datos cargados desde '{archivo}'.")
+            print(f"Datos cargados desde '{archivo}'.\n")
 
         except FileNotFoundError:
             print(f"Error: El archivo '{archivo}' no existe.")
@@ -158,8 +159,9 @@ class Tienda:
             print(f"Error: El archivo '{archivo}' no existe.")
 
 
-
+# Cargar los datos
 tienda = Tienda()
+tienda.cargar_datos("datos_tienda.txt")
 
 # Agregar productos y clientes
 producto1 = Producto("mouse", 3, 500.0, 10)
@@ -171,10 +173,6 @@ tienda.agregar_cliente(cliente1)
 # Guardar en el archivo
 tienda.guardar_datos("datos_tienda.txt")
 
-# Crear una nueva tienda y cargar los datos
-nueva_tienda = Tienda()
-nueva_tienda.cargar_datos("datos_tienda.txt")
-
 # Mostrar productos y clientes
-nueva_tienda.mostrar_productos()
-nueva_tienda.mostrar_clientes()
+tienda.mostrar_productos()
+tienda.mostrar_clientes()

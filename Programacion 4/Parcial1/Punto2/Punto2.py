@@ -63,7 +63,13 @@ class GestorEmpleados:
         self.lista_empleados = []
 
     def agregar_empleado(self, empleado):
+        # Verificar que el empleado no exista en la lista
+        for e in self.lista_empleados:
+            if e.id == empleado.id:
+                print("El empleado ya existe")
+                return
         self.lista_empleados.append(empleado)
+        print("Empleado agregado con éxito") # Mensaje de confirmación
 
     def eliminar_empleado(self, id):
         for empleado in self.lista_empleados:
@@ -140,7 +146,6 @@ def menu():
             años_experiencia = int(input("Años de Experiencia: "))
             empleado = Empleado(nombre, id, salario_base, años_experiencia)
             gestor.agregar_empleado(empleado)
-            print("Empleado agregado con éxito") # Mensaje de confirmación
         
         elif opcion == "2":
             id = int(input("ID: ")) # Solicitar el ID del empleado a eliminar

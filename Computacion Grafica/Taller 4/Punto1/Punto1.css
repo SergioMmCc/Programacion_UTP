@@ -1,0 +1,163 @@
+body{
+    /* Sirve para crear un degradado lineal,  */
+    /* Normalmente tiene 3 parametros:
+        1. La dirección, puede ser de arriba a abajo (por defecto),
+           de izquierda a derecha usando "to right" y también en
+           diagonal usando "45deg" (45 puede ser otro valor)
+        2. El color de inicio
+        3. El color de final 
+        También se pueden usar colores de transparencia.
+        Se pueden usar más de 2 colores
+        Se pueden usar números con porcentajes al lado de los colores
+        para decir cuanto ocupa cada color */
+    background: linear-gradient(rgb(16, 16, 16), white);
+}
+
+.container{
+    width: 100%;
+    height: 100vh;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-container{
+    display: flex;
+    width: 650px;
+    height: auto;
+    background: #fff;
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .2);
+
+/*  box-shadow sirve para agregar sombras a los elementos.
+    Se puede usar sobre cajas como divs, botones, tarjetas, etc.
+    Se usa para dar un efecto de profundidad y resaltar los elementos.
+    box-shadow: desplazamientoX desplazamientoY desenfoque expansión color;
+    Tiene 5 parámetros:
+        1. Desplazamiento en X
+        2. Desplazamiento en Y
+        3. Desenfoque
+        4. Expansión
+        5. Color
+    Se pueden usar valores negativos para los desplazamientos
+    Se pueden usar valores en px, em, rem, %, etc.
+    Se pueden usar colores en rgb, rgba, hexadecimales, etc.
+    Se pueden usar más de un color separando con comas
+    Se pueden usar más de una sombra separando con comas
+*/
+}
+
+.register, .login{
+    flex: 1;
+    /* flex sirve para distribuir el espacio disponible en un contenedor */
+    /* Se puede usar en contenedores flexibles */
+}
+
+.register{
+    padding: 40px;
+    position: relative;
+    /* position sirve para establecer el tipo de posicionamiento de un elemento */
+    /* Se puede usar en cualquier elemento */
+    /* Tiene 5 valores:
+        1. static: Por defecto, no se puede mover
+        2. relative: Se puede mover con top, bottom, left y right
+        3. absolute: Se puede mover con top, bottom, left y right, pero se mueve con respecto al contenedor padre
+        4. fixed: Se puede mover con top, bottom, left y right, pero se mueve con respecto a la ventana
+        5. sticky: Se puede mover con top, bottom, left y right, pero se mueve con respecto al contenedor padre y se queda fijo al llegar a un punto
+    */
+}
+
+.register h3{
+    color: #797979;
+    margin-bottom: 30px;
+}
+
+.register input{
+    width: 100%;
+    padding: 5px;
+    font-size: 16px;
+    margin-bottom: 25px;
+    border-top-style: none;
+    border-left-style: none;
+    border-right-style: none;
+    border-bottom: 1px solid #a8a8a8;
+    color: #333;
+}
+
+.register .submit{
+    width: auto;
+    padding: 10px;
+    background: #102dc6;
+    color: #fff;
+    font-size: 12px;
+    box-shadow: 0 0 3px 0 rgba(0, 0, 0, .2);
+    cursor: pointer;
+    /* cursor sirve para cambiar el cursor del mouse */
+    /* Se puede usar en cualquier elemento */
+    /* Tiene varios valores, los más comunes son:
+        auto: Por defecto, el navegador decide el cursor
+        pointer: El cursor se convierte en una mano
+        crosshair: El cursor se convierte en una cruz
+        move: El cursor se convierte en una flecha con 4 puntas
+        text: El cursor se convierte en un cursor de texto
+        wait: El cursor se convierte en un reloj de arena
+        help: El cursor se convierte en un signo de interrogación
+        none: No se muestra el cursor
+     */
+}
+
+.login{
+    background-image: linear-gradient(to bottom right, #101515, #dce4df);
+    /* background-image sirve para establecer una imagen de fondo */
+    /* Se puede usar en cualquier elemento */
+    /* Se puede usar con cualquier propiedad de fondo */
+    /* Se puede usar con cualquier valor de fondo */
+    /* Se puede usar con más de una imagen de fondo, separando con comas */
+    /* Se puede usar con más de una propiedad de fondo */
+    /* Como vemos, también se le puede aplicar linear-gradient */
+
+    padding: 40px;
+}
+
+.login h3{
+    color: #fff;
+    margin-bottom: 45px;
+}
+
+.login button i{
+    position:absolute;
+    top:12px;
+    left:12px;
+    /* top, left, right y bottom sirven para establecer la posición de un elemento */
+    /* Se puede usar en cualquier elemento */
+    /* Se puede usar en elementos posicionados */
+    /* El tamaño del contenedor padre es el punto de referencia */
+    /* Se puede usar con valores en px, em, rem, %, etc. */
+}
+
+.login button{
+    width: 100%;
+    margin: 15px 0px;
+    padding: 10px;
+    box-shadow: 0 0 3px 0 rgba(0, 0, 0, .2);
+    cursor: pointer;
+    position: relative;
+}
+
+.login .fb{
+    background: #3b5999;
+    border-style: none;
+    color: #fff;
+}
+
+.login .tw{
+    background: #55acef;
+    border-style: none;
+    color: #fff;
+}
+
+.login .correo{
+    background: #33d4ce;
+    border-style: none;
+    color: #fff;
+}

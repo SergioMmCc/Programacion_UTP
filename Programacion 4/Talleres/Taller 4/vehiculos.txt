@@ -1,0 +1,3 @@
+12,automovil,rojo,2,bridgestone,140,300
+1,moto,balcno,2,irelli,,
+2,camion,negro,8,firestone,,

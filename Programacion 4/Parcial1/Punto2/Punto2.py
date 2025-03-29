@@ -34,7 +34,7 @@ class Empleado:
         return self.salario_base + bono
 
     def __str__(self):
-        return f"Nombre: {self.nombre}, ID: {self.id}, Salario: {self.calcular_salario()}"
+        return f"Nombre: {self.nombre}, ID: {self.id}, Salario: {self.calcular_salario()}, Anios de experiencia: {self.años_experiencia}"
 
 
 # Clase GestorEmpleados:

@@ -164,11 +164,7 @@ tienda = Tienda()
 tienda.cargar_datos("datos_tienda.txt")
 
 # Agregar productos y clientes
-producto1 = Producto("mouse", 3, 500.0, 10)
-cliente1 = Cliente("Miguel", 102, 17000.0)
-
-tienda.agregar_producto(producto1)
-tienda.agregar_cliente(cliente1)
+tienda.realizar_venta(102,3,1)
 
 # Guardar en el archivo
 tienda.guardar_datos("datos_tienda.txt")

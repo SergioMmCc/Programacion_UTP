@@ -1,4 +1,4 @@
 PRODUCTOS:
-mouse,3,500.0,10
+mouse,3,500.0,8
 CLIENTES:
-Miguel,102,17000.0
+Miguel,102,16000.0

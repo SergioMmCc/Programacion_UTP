@@ -1,0 +1,3 @@
+P|Andres Garcia|Sistemas|12|12|2020|15|Progra 4, Compu Grafica, Inge Soft
+A|Sergio|Sistemas|1|8|2022|6
+PA|Sergio|Sistemas|1|7|2022|10|Mate 4, Mate 3, Mate 2|alumno|6

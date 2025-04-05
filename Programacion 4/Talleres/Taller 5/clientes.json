@@ -1,0 +1,20 @@
+[
+    {
+        "tipo": "ClienteFrecuente",
+        "nombre": "Sergio",
+        "cedula": "1089380570",
+        "direccion": "Guayacanes",
+        "telefono": "3222084490",
+        "correo": "agua",
+        "puntos": 120
+    },
+    {
+        "tipo": "ClienteVIP",
+        "nombre": "Santiago",
+        "cedula": "131313",
+        "direccion": "siu",
+        "telefono": "13114",
+        "correo": "afafd",
+        "descuento": 0.2
+    }
+]

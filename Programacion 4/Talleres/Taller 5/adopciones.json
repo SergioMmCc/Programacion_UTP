@@ -1,0 +1,12 @@
+[
+    {
+        "cliente": "Sergio",
+        "animal": "Doki",
+        "fecha": "2025-04-04"
+    },
+    {
+        "cliente": "Santiago",
+        "animal": "Nemo",
+        "fecha": "2025"
+    }
+]

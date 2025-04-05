@@ -1,0 +1,26 @@
+[
+    {
+        "tipo": "Perro",
+        "nombre": "Doki",
+        "edad": 11,
+        "color": "Dorado",
+        "peso": 60.0,
+        "raza": "Mestizo"
+    },
+    {
+        "tipo": "Gato",
+        "nombre": "Candy",
+        "edad": 7,
+        "color": "Blanco",
+        "peso": 30.0,
+        "pelaje": "Grueso"
+    },
+    {
+        "tipo": "Pez",
+        "nombre": "Nemo",
+        "edad": 10,
+        "color": "Naranja",
+        "peso": 1.0,
+        "tipo_agua": "Salada"
+    }
+]

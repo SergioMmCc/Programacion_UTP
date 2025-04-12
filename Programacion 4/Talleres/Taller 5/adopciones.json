@@ -8,5 +8,10 @@
         "cliente": "Santiago",
         "animal": "Nemo",
         "fecha": "2025"
+    },
+    {
+        "cliente": "Sergio",
+        "animal": "Nemo",
+        "fecha": "12-12-2022"
     }
 ]

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Taller VI</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; background: #f4f4f4; }
+    label, input, textarea, select, button {
+      display: block;
+      margin: 10px 0;
+      width: 100%;
+    }
+    textarea { height: 200px; }
+    .oculto { display: none; }
+  </style>
+</head>
+<body>
+  <h1>Taller VI</h1>
+
+  <label for="menu">Seleccione una opción:</label>
+  <select id="menu" onchange="mostrarFormulario()">
+    <option value="">-- Seleccione --</option>
+    <option value="1">1. Tabla de multiplicar</option>
+    <option value="2">2. Dibujar rectángulo</option>
+    <option value="3">3. Contar años bisiestos</option>
+    <option value="4">4. Suma de números distintos</option>
+    <option value="5">5. Validar correo</option>
+    <option value="6">6. Longitud de cadenas</option>
+  </select>
+
+  <form id="formulario" onsubmit="ejecutar(event)">
+    <div id="inputs"></div>
+    <button type="submit">Ejecutar</button>
+  </form>
+
+  <h3>Resultado:</h3>
+  <textarea id="salida" readonly></textarea>
+
+  <script src="script.js"></script>
+</body>
+</html>

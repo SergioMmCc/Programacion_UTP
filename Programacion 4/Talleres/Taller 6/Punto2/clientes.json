@@ -1,0 +1,20 @@
+[
+    {
+        "tipo": "ClienteFrecuente",
+        "nombre": "Sergio",
+        "cedula": "1089380570",
+        "direccion": "Mz I Cs 1A",
+        "telefono": "3222084490",
+        "correo": "adfasfa@gmial.com",
+        "puntos": 210
+    },
+    {
+        "tipo": "ClienteVIP",
+        "nombre": "Andres",
+        "cedula": "13122414",
+        "direccion": "Cartago",
+        "telefono": "321313113",
+        "correo": "andres@utp.edu.co",
+        "descuento": 0.2
+    }
+]

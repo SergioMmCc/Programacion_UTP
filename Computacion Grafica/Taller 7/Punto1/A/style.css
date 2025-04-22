@@ -1,0 +1,26 @@
+/* Fondo degradado general */
+body.bg-gradient {
+    background: linear-gradient(rgb(16, 16, 16), white);
+  }
+  
+  /* Fondo del login derecho */
+  .login-bg {
+    background-image: linear-gradient(to bottom right, #101515, #dce4df);
+  }
+  
+  /* Botón de correo personalizado */
+  .btn-teal {
+    background-color: #33d4ce;
+    color: white;
+    border: none;
+  }
+  
+  .btn-teal:hover {
+    background-color: #2bbfba;
+  }
+  
+  /* Íconos alineados */
+  button i {
+    left: 12px;
+  }
+  

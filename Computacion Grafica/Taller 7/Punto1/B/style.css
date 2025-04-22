@@ -1,0 +1,31 @@
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+.chat-item:hover,
+.upgrade:hover {
+    background-color: #444 !important;
+    transition: background-color 0.3s;
+    cursor: pointer;
+}
+
+input::placeholder {
+    color: #ccc;
+}
+
+.chat-item:hover {
+    background-color: #444 !important;
+    transition: background-color 0.3s;
+    cursor: pointer;
+}
+
+.upgrade:hover {
+    background-color: #444 !important;
+    transition: background-color 0.3s;
+    cursor: pointer;
+}
+
+input::placeholder {
+    color: #ccc;
+}

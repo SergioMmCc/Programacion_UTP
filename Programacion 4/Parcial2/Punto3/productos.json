@@ -1,0 +1,44 @@
+[
+    {
+        "tipo": "Electronico",
+        "nombre": "Auriculares Bluetooth",
+        "precio": 39.99,
+        "cantidad": 14,
+        "garantia": 12
+    },
+    {
+        "tipo": "Electronico",
+        "nombre": "Smartphone X9",
+        "precio": 599.99,
+        "cantidad": 8,
+        "garantia": 24
+    },
+    {
+        "tipo": "Ropa",
+        "nombre": "Camiseta Negra",
+        "precio": 14.5,
+        "cantidad": 0,
+        "talla": "M"
+    },
+    {
+        "tipo": "Ropa",
+        "nombre": "Pantal\u00f3n Jeans",
+        "precio": 29.9,
+        "cantidad": 20,
+        "talla": "L"
+    },
+    {
+        "tipo": "Alimento",
+        "nombre": "Leche Deslactosada",
+        "precio": 2.2,
+        "cantidad": 50,
+        "caducidad": "2025-06-15"
+    },
+    {
+        "tipo": "Alimento",
+        "nombre": "Pan Integral",
+        "precio": 1.5,
+        "cantidad": 34,
+        "caducidad": "2025-05-10"
+    }
+]

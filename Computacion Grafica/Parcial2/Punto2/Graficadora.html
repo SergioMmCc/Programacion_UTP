@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Gráfico de líneas en Canvas</title>
+  <style>
+    body {
+      font-family: Arial;
+    }
+    canvas {
+      border: 1px solid #ccc;
+      display: block;
+      margin-top: 10px;
+    }
+    input, button {
+      margin-top: 10px;
+      padding: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h3><strong>Gráfico de líneas en Canvas</strong></h3>
+  
+  <label for="datosInput">Introduce los datos (separados por comas):</label><br>
+  <input type="text" id="datosInput" placeholder="Ej: 60, 120, 80, 110"><br>
+  <button onclick="graficar()">Graficar</button>
+
+  <canvas id="grafico" width="300" height="250"></canvas>
+
+  <!-- Vinculamos el archivo JS -->
+  <script src="script.js"></script>
+</body>
+</html>

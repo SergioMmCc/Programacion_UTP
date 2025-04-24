@@ -1,0 +1,48 @@
+[
+    {
+        "tipo": "simple",
+        "numero": 101,
+        "precio": 100000,
+        "estado": "reservado"
+    },
+    {
+        "tipo": "simple",
+        "numero": 102,
+        "precio": 120000,
+        "estado": "reservado"
+    },
+    {
+        "tipo": "doble",
+        "numero": 201,
+        "precio": 150000,
+        "estado": "reservado",
+        "desayuno": true,
+        "spa": false
+    },
+    {
+        "tipo": "doble",
+        "numero": 202,
+        "precio": 180000,
+        "estado": "disponible",
+        "desayuno": false,
+        "spa": false
+    },
+    {
+        "tipo": "suite",
+        "numero": 301,
+        "precio": 250000,
+        "estado": "disponible",
+        "desayuno": false,
+        "spa": false,
+        "gym": false
+    },
+    {
+        "tipo": "suite",
+        "numero": 302,
+        "precio": 300000,
+        "estado": "reservado",
+        "desayuno": true,
+        "spa": true,
+        "gym": true
+    }
+]

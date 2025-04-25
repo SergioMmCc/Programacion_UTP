@@ -1,0 +1,153 @@
+:root {
+    --primary: #0057A3;
+    --secondary: #00875A;
+    --accent: #FFC107;
+    --light-bg: #F5F9FC;
+    --text-dark: #333333;
+  }
+  
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--light-bg);
+    color: var(--text-dark);
+    padding-top: 70px;
+  }
+  
+  .hero-section {
+    background: linear-gradient(rgba(0, 87, 163, 0.8), rgba(0, 135, 90, 0.8)), url('hero.jpg') center/cover;
+    color: white;
+    height: 80vh;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  }
+  
+  .navbar-brand img {
+    height: 40px;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+  }
+  
+  .card {
+    border-radius: 1rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  }
+  
+  .card .btn {
+    border-radius: 2rem;
+  }
+  
+  section {
+    padding: 60px 0;
+  }
+  
+  footer {
+    background-color: #f8f9fa;
+    color: var(--text-dark);
+  }
+  
+  footer a {
+    color: var(--text-dark);
+  }
+  
+  footer a:hover {
+    color: var(--primary);
+  }
+  
+  .btn-primary {
+    background-color: var(--primary);
+    border-color: var(--primary);
+  }
+  
+  .btn-outline-primary {
+    border-color: var(--primary);
+    color: var(--primary);
+  }
+  
+  .btn-outline-primary:hover {
+    background-color: var(--primary);
+    color: white;
+  }
+  
+  .btn-success {
+    background-color: var(--secondary);
+    border-color: var(--secondary);
+  }
+  
+  .btn-success:hover {
+    background-color: #006b47;
+    border-color: #006b47;
+  }
+  
+  .bg-primary {
+    background-color: var(--primary) !important;
+  }
+  
+  .border-primary {
+    border-color: var(--primary) !important;
+  }
+  
+  .bg-success {
+    background-color: var(--secondary) !important;
+  }
+  
+  .border-success {
+    border-color: var(--secondary) !important;
+  }
+  
+  .btn-dark {
+    background-color: #333;
+    border-color: #333;
+  }
+  
+  .border-dark {
+    border-color: #333 !important;
+  }
+  
+  .bg-dark {
+    background-color: #333 !important;
+  }
+  
+  .card-header {
+    font-size: 1.25rem;
+    font-weight: bold;
+  }
+  
+  ul {
+    padding-left: 1.25rem;
+    list-style-type: none;
+  }
+  
+  ul li::before {
+    content: "\2022";
+    color: var(--accent);
+    font-weight: bold;
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
+  }
+  
+  /* Imagenes circulares de instructores */
+  .card-img-top.rounded-circle {
+    border: 4px solid var(--primary);
+  }
+  
+  /* Espaciado adicional para secciones */
+  #cursos, #planes, #instructores {
+    background-color: white;
+  }
+  
+  .hero-section .btn {
+    background-color: var(--accent);
+    border: none;
+    color: #333;
+  }
+  
+  .hero-section .btn:hover {
+    background-color: #e0a800;
+  }
+  
+  .text-uppercase {
+    letter-spacing: 1px;
+  }
+  

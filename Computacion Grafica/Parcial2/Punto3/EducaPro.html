@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EducaPro - Plataforma de Cursos</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+<!-- Barra de navegación -->
+<nav class="navbar navbar-expand-lg fixed-top navbar-light bg-white shadow-sm">
+  <div class="container">
+    <a class="navbar-brand" href="#">
+      <img src="logo.png" alt="EducaPro" height="40">
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item"><a class="nav-link" href="#cursos">Cursos</a></li>
+        <li class="nav-item"><a class="nav-link" href="#planes">Planes</a></li>
+        <li class="nav-item"><a class="nav-link" href="#instructores">Instructores</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
+      </ul>
+      <div class="d-flex">
+        <button class="btn btn-outline-primary me-2">Regístrate</button>
+        <button class="btn btn-primary">Iniciar sesión</button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero -->
+<header class="hero-section d-flex align-items-center">
+  <div class="container text-center">
+    <h1 class="fw-bold">Impulsa tu futuro con EducaPro</h1>
+    <p class="lead">Explora nuestros cursos y transforma tu carrera profesional</p>
+    <a href="#cursos" class="btn btn-success btn-lg mt-3">Explorar Cursos</a>
+  </div>
+</header>
+
+<!-- Cursos Destacados -->
+<section id="cursos">
+  <div class="container">
+    <h2 class="text-center mb-5">Cursos Destacados</h2>
+    <div class="row">
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="curso1.jpg" class="card-img-top" alt="Curso 1">
+          <div class="card-body">
+            <h5 class="card-title">Programación Web</h5>
+            <p class="card-text">Aprende HTML, CSS y JavaScript desde cero.</p>
+            <a href="#" class="btn btn-success">Inscribirse</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="curso2.jpg" class="card-img-top" alt="Curso 2">
+          <div class="card-body">
+            <h5 class="card-title">Ciencia de Datos</h5>
+            <p class="card-text">Domina Python, análisis de datos y machine learning.</p>
+            <a href="#" class="btn btn-success">Inscribirse</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="curso3.jpg" class="card-img-top" alt="Curso 3">
+          <div class="card-body">
+            <h5 class="card-title">Diseño Gráfico</h5>
+            <p class="card-text">Aprende a diseñar con herramientas modernas.</p>
+            <a href="#" class="btn btn-success">Inscribirse</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Planes de Pago -->
+<section id="planes">
+  <div class="container">
+    <h2 class="text-center mb-5">Planes de Pago</h2>
+    <div class="row">
+      <div class="col-md-4 mb-4">
+        <div class="card h-100 border-primary">
+          <div class="card-header text-center bg-primary text-white">Básico</div>
+          <div class="card-body">
+            <h3 class="text-center">$9.99/mes</h3>
+            <ul>
+              <li>✔ Acceso a cursos básicos</li>
+              <li>✔ Certificado digital</li>
+              <li>✖ Soporte personalizado</li>
+            </ul>
+            <div class="d-grid">
+              <button class="btn btn-outline-primary">Seleccionar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="card h-100 border-success">
+          <div class="card-header text-center bg-success text-white">Intermedio</div>
+          <div class="card-body">
+            <h3 class="text-center">$19.99/mes</h3>
+            <ul>
+              <li>✔ Acceso a todos los cursos</li>
+              <li>✔ Certificado digital</li>
+              <li>✔ Soporte por correo</li>
+            </ul>
+            <div class="d-grid">
+              <button class="btn btn-success">Seleccionar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="card h-100 border-dark">
+          <div class="card-header text-center bg-dark text-white">Avanzado</div>
+          <div class="card-body">
+            <h3 class="text-center">$29.99/mes</h3>
+            <ul>
+              <li>✔ Acceso ilimitado</li>
+              <li>✔ Certificado físico y digital</li>
+              <li>✔ Soporte premium 24/7</li>
+            </ul>
+            <div class="d-grid">
+              <button class="btn btn-dark">Seleccionar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Instructores -->
+<section id="instructores" class="bg-light">
+  <div class="container">
+    <h2 class="text-center mb-5">Nuestros Instructores</h2>
+    <div class="row">
+      <div class="col-md-4 mb-4 text-center">
+        <div class="card">
+          <img src="instructor1.jpg" class="card-img-top rounded-circle mx-auto mt-4" style="width: 150px; height: 150px; object-fit: cover;" alt="Instructor 1">
+          <div class="card-body">
+            <h5>Laura Torres</h5>
+            <p>Especialista en desarrollo web con 10 años de experiencia.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4 text-center">
+        <div class="card">
+          <img src="instructor2.jpg" class="card-img-top rounded-circle mx-auto mt-4" style="width: 150px; height: 150px; object-fit: cover;" alt="Instructor 2">
+          <div class="card-body">
+            <h5>Carlos Méndez</h5>
+            <p>Científico de datos apasionado por el aprendizaje automático.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4 text-center">
+        <div class="card">
+          <img src="instructor3.jpg" class="card-img-top rounded-circle mx-auto mt-4" style="width: 150px; height: 150px; object-fit: cover;" alt="Instructor 3">
+          <div class="card-body">
+            <h5>Ana Rivera</h5>
+            <p>Diseñadora gráfica con experiencia en branding y diseño digital.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-light text-center text-lg-start mt-5">
+  <div class="container p-4">
+    <div class="row">
+      <div class="col-lg-6 col-md-12 mb-4">
+        <h5 class="text-uppercase">EducaPro</h5>
+        <p>Dirección: Calle Ficticia 123, Ciudad Educativa, País del Conocimiento</p>
+      </div>
+      <div class="col-lg-6 col-md-12 mb-4 text-center">
+        <h5 class="text-uppercase">Síguenos</h5>
+        <a href="#" class="me-3 text-dark"><i class="fab fa-facebook fa-lg"></i></a>
+        <a href="#" class="me-3 text-dark"><i class="fab fa-twitter fa-lg"></i></a>
+        <a href="#" class="text-dark"><i class="fab fa-instagram fa-lg"></i></a>
+      </div>
+    </div>
+  </div>
+  <div class="text-center p-3 bg-dark text-white">
+    &copy; 2025 EducaPro. Todos los derechos reservados.
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

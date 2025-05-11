@@ -1,0 +1,14 @@
+[
+    {
+        "titulo": "La odisea",
+        "autor": "Gabriel Garcia",
+        "fecha": 2020,
+        "genero": "Comedia"
+    },
+    {
+        "titulo": "Meditaciones",
+        "autor": "Marco Aurelio",
+        "fecha": 2000,
+        "genero": "Filosofia"
+    }
+]

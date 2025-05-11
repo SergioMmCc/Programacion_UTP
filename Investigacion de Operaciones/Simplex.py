@@ -1,0 +1,105 @@
+"""
+Método Simplex para Maximización
+
+Este programa implementa el algoritmo del método simplex para resolver
+problemas de programación lineal de maximización con restricciones lineales
+en forma estándar (desigualdades tipo ≤ y variables no negativas).
+
+El algoritmo construye una tabla simplex, agrega variables de holgura
+y realiza iteraciones para encontrar la solución óptima, si existe.
+
+Limitaciones:
+- Solo admite restricciones del tipo '≤'.
+- Todas las variables deben ser no negativas.
+- El problema debe tener solución acotada.
+
+Ejemplo de uso:
+Maximizar Z = 3x + 5y
+Sujeto a:
+    2x + 3y ≤ 8
+    2x +  y ≤ 6
+    x, y ≥ 0
+
+La solución óptima será:
+    x = 0, y = 8/3, Z = 40/3 ≈ 13.33
+
+Cabe resaltar que la solución podrá tener como coeficiente numeros decimales, es decir,
+no esta limitada a entregar solo enteros
+"""
+
+
+import numpy as np
+
+def simplex(c, A, b):
+    m, n = A.shape
+    tableau = np.zeros((m + 1, n + m + 1))
+    tableau[:m, :n] = A
+    tableau[:m, n:n + m] = np.eye(m)
+    tableau[:m, -1] = b
+    tableau[-1, :n] = -c
+
+    while True:
+        col = np.argmin(tableau[-1, :-1])
+        if tableau[-1, col] >= 0:
+            break
+
+        ratios = []
+        for i in range(m):
+            if tableau[i, col] > 0:
+                ratios.append(tableau[i, -1] / tableau[i, col])
+            else:
+                ratios.append(np.inf)
+        row = np.argmin(ratios)
+        if ratios[row] == np.inf:
+            raise Exception("Solución no acotada")
+        pivot = tableau[row, col]
+        tableau[row, :] /= pivot
+        for i in range(m + 1):
+            if i != row:
+                tableau[i, :] -= tableau[i, col] * tableau[row, :]
+
+    x = np.zeros(n)
+    for j in range(n):
+        col = tableau[:m, j]
+        if np.count_nonzero(col) == 1 and 1 in col:
+            row = np.where(col == 1)[0][0]
+            x[j] = tableau[row, -1]
+    z = tableau[-1, -1]
+    return x, z
+
+
+# Pedir datos al usuario
+'''
+El usuario ingresa:
+- El número de variables y restricciones.
+- Los coeficientes de la función objetivo (Z).
+- Los coeficientes y términos independientes de las restricciones.
+'''
+def pedir_datos():
+    n = int(input("Número de variables: "))
+    m = int(input("Número de restricciones: "))
+
+    print("\nIngrese los coeficientes de la función objetivo (Z = ...):")
+    c = np.array([float(input(f"Coeficiente de x{i+1}: ")) for i in range(n)])
+
+    A = []
+    b = []
+    print("\nIngrese los coeficientes de las restricciones (formato: a1 x1 + a2 x2 + ... ≤ b):")
+    for i in range(m):
+        print(f"\nRestricción {i+1}:")
+        fila = [float(input(f"Coeficiente de x{j+1}: ")) for j in range(n)]
+        A.append(fila)
+        b_i = float(input("Término independiente (lado derecho): "))
+        b.append(b_i)
+
+    return c, np.array(A), np.array(b)
+
+
+# Ejecución
+if __name__ == "__main__":
+    c, A, b = pedir_datos()
+    sol, z_max = simplex(c, A, b)
+    print("\nSolución óptima encontrada:")
+    for i, val in enumerate(sol):
+        print(f"x{i+1} = {val}")
+    print(f"Z máximo = {z_max}")

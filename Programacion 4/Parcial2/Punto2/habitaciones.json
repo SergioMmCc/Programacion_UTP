@@ -31,8 +31,8 @@
         "tipo": "suite",
         "numero": 301,
         "precio": 250000,
-        "estado": "disponible",
-        "desayuno": false,
+        "estado": "reservado",
+        "desayuno": true,
         "spa": false,
         "gym": false
     },

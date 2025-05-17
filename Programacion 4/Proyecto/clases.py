@@ -1,6 +1,7 @@
 # Sistema de manejo de vuelos de una aerolinea
 from datetime import datetime
-
+import uuid
+from objetos import aviones, vuelos, pasajeros, reservas
 class Pasajero:
     def __init__(self, id_pasajero, nombre, correo):
         self.setId(id_pasajero)
@@ -82,16 +83,15 @@ class Avion:
         return self.__capacidad_ejecutiva
 
 class Vuelo:
-    def __init__(self, id_vuelo, avion, origen, destino, salida, llegada, precio_economica, precio_ejecutiva):
+    def __init__(self, id_vuelo, id_avion, origen, destino, salida, llegada, precio_economica, precio_ejecutiva):
         self.setId(id_vuelo)
-        self.setAvion(avion)
+        self.setIdAvion(id_avion)
         self.setOrigen(origen)
         self.setDestino(destino)
         self.setFechaHoraSalida(salida)
         self.setFechaHoraLlegada(llegada)
         self.setPrecioEconomica(precio_economica)
         self.setPrecioEjecutiva(precio_ejecutiva)
-        self.__reservas = []  # Lista vacía para ir guardando reservas
 
     # Métodos set
     def setId(self, nuevoId):
@@ -100,11 +100,14 @@ class Vuelo:
         else:
             raise ValueError("ID inválido: debe ser un número entero no negativo.")
 
-    def setAvion(self, nuevoAvion):
-        if isinstance(nuevoAvion, Avion):
-            self.__avion = nuevoAvion
-        else:
-            raise ValueError("Debe asignarse un objeto de tipo avión.")
+    def setIdAvion(self, id_avion):
+        if not isinstance(id_avion, int) or id_avion < 0:
+            raise ValueError("El ID del avión debe ser un número entero no negativo.")
+        
+        # Validar que el avión exista
+        if not any(a.getId() == id_avion for a in aviones):
+            raise ValueError(f"No existe ningún avión con ID {id_avion}.")
+        self.__id_avion = id_avion
 
     def setOrigen(self, nuevoOrigen):
         if isinstance(nuevoOrigen, str) and nuevoOrigen.strip() != "":
@@ -125,10 +128,12 @@ class Vuelo:
             raise ValueError("Fecha de salida inválida: debe ser un objeto datetime.")
 
     def setFechaHoraLlegada(self, nuevaLlegada):
-        if isinstance(nuevaLlegada, datetime):
-            self.__fecha_hora_llegada = nuevaLlegada
-        else:
+        if not isinstance(nuevaLlegada, datetime):
             raise ValueError("Fecha de llegada inválida: debe ser un objeto datetime.")
+        if hasattr(self, '_Vuelo__fecha_hora_salida') and nuevaLlegada <= self.__fecha_hora_salida:
+            raise ValueError("La fecha de llegada debe ser posterior a la fecha de salida.")
+        self.__fecha_hora_llegada = nuevaLlegada
+
 
     def setPrecioEconomica(self, nuevoPrecio):
         if isinstance(nuevoPrecio, (int, float)) and nuevoPrecio > 0:
@@ -146,8 +151,8 @@ class Vuelo:
     def getId(self):
         return self.__id
 
-    def getAvion(self):
-        return self.__avion
+    def getIdAvion(self):
+        return self.__id_avion
 
     def getOrigen(self):
         return self.__origen
@@ -167,31 +172,42 @@ class Vuelo:
     def getPrecioEjecutiva(self):
         return self.__precio_ejecutiva
 
-    def getReservas(self):
-        return self.__reservas
-
-    def agregarReserva(self, reserva):
-        self.__reservas.append(reserva)
-
 class Reserva:
-    def __init__(self, pasajero, vuelo, tipo_asiento):
-        self.setPasajero(pasajero)
-        self.setVuelo(vuelo)
+    def __init__(self, id_pasajero, id_vuelo, tipo_asiento, id=None):
+        self.setIdPasajero(id_pasajero)
+        self.setIdVuelo(id_vuelo)
         self.setTipoAsiento(tipo_asiento)
-        self.__estado = "activa"  # puede ser 'activa' o 'cancelada'
+        self.__estado = "activa"
+        if id is None:
+            self.__id = self.generar_id_unico()
+        else:
+            self.__id = id
 
+
+    # Método para generar id único
+    def generar_id_unico(self):
+        return str(uuid.uuid4())
+    
     # Métodos set
-    def setPasajero(self, pasajero):
-        if isinstance(pasajero, Pasajero):
-            self.__pasajero = pasajero
-        else:
-            raise ValueError("Debe asignarse un objeto de tipo Pasajero.")
+    def setIdPasajero(self, id_pasajero):
+        if not isinstance(id_pasajero, int) or id_pasajero < 0:
+            raise ValueError("El ID del pasajero debe ser un número entero no negativo.")
+        
+        # Validar que el pasajero exista
+        if not any(p.getId() == id_pasajero for p in pasajeros):
+            raise ValueError(f"No existe ningún pasajero con ID {id_pasajero}.")
+        
+        self.__id_pasajero = id_pasajero
 
-    def setVuelo(self, vuelo):
-        if isinstance(vuelo, Vuelo):
-            self.__vuelo = vuelo
-        else:
-            raise ValueError("Debe asignarse un objeto de tipo Vuelo.")
+    def setIdVuelo(self, id_vuelo):
+        if not isinstance(id_vuelo, int) or id_vuelo < 0:
+            raise ValueError("El ID del vuelo debe ser un número entero no negativo.")
+        
+        # Validar que el vuelo exista
+        if not any(v.getId() == id_vuelo for v in vuelos):
+            raise ValueError(f"No existe ningún vuelo con ID {id_vuelo}.")
+        
+        self.__id_vuelo = id_vuelo
 
     def setTipoAsiento(self, tipo):
         if tipo.lower() in ["economico", "ejecutivo"]:
@@ -206,11 +222,14 @@ class Reserva:
             raise ValueError("Estado inválido. Use 'activa' o 'cancelada'.")
 
     # Métodos get
-    def getPasajero(self):
-        return self.__pasajero
+    def getId(self):
+        return self.__id
+    
+    def getIdPasajero(self):
+        return self.__id_pasajero
 
-    def getVuelo(self):
-        return self.__vuelo
+    def getIdVuelo(self):
+        return self.__id_vuelo
 
     def getTipoAsiento(self):
         return self.__tipo_asiento
@@ -218,10 +237,11 @@ class Reserva:
     def getEstado(self):
         return self.__estado
 
+
 class ReservaEconomica(Reserva):
-    def __init__(self, pasajero, vuelo):
-        super().__init__(pasajero, vuelo, "economico")
-    
+    def __init__(self, id_pasajero, id_vuelo):
+        super().__init__(id_pasajero, id_vuelo, "economico")
+
 class ReservaEjecutiva(Reserva):
-    def __init__(self, pasajero, vuelo):
-        super().__init__(pasajero, vuelo, "ejecutivo")
+    def __init__(self, id_pasajero, id_vuelo):
+        super().__init__(id_pasajero, id_vuelo, "ejecutivo")

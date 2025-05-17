@@ -20,7 +20,7 @@ def guardar():
     # Guardamos los datos de los vuelos
     data_vuelos = [{
         "id": v.getId(),
-        "avionId": v.getAvion().getId(),  # Guardamos el id del avión, no el objeto completo
+        "avionId": v.getIdAvion(),  # Guardamos el id del avión, no el objeto completo
         "origen": v.getOrigen(),
         "destino": v.getDestino(),
         "fechaHoraSalida": v.getFechaHoraSalida().strftime("%Y-%m-%d %H:%M:%S"),
@@ -38,8 +38,9 @@ def guardar():
 
     # Guardamos los datos de las reservas
     data_reservas = [{
-        "pasajeroId": r.getPasajero().getId(),  # Guardamos el id del pasajero, no el objeto completo
-        "vueloId": r.getVuelo().getId(),        # Guardamos el id del vuelo, no el objeto completo
+        "id": r.getId(),  # Nuevo campo: ID único de la reserva
+        "pasajeroId": r.getIdPasajero(),
+        "vueloId": r.getIdVuelo(),
         "tipoAsiento": r.getTipoAsiento(),
         "estado": r.getEstado()
     } for r in reservas]
@@ -76,8 +77,7 @@ def cargar():
     if os.path.exists("archivos/vuelos.json"):
         with open("archivos/vuelos.json", "r", encoding="utf-8") as f:
             for v in json.load(f):
-                avion = next((a for a in aviones if a.getId() == v["avionId"]), None)
-                vuelo = Vuelo(v["id"], avion, v["origen"], v["destino"], 
+                vuelo = Vuelo(v["id"], v["idAvion"], v["origen"], v["destino"], 
                               datetime.strptime(v["fechaHoraSalida"], "%Y-%m-%d %H:%M:%S"),
                               datetime.strptime(v["fechaHoraLlegada"], "%Y-%m-%d %H:%M:%S"),
                               v["precioEconomica"], v["precioEjecutiva"])
@@ -94,10 +94,9 @@ def cargar():
     if os.path.exists("archivos/reservas.json"):
         with open("archivos/reservas.json", "r", encoding="utf-8") as f:
             for r in json.load(f):
-                pasajero = next((p for p in pasajeros if p.getId() == r["pasajeroId"]), None)
-                vuelo = next((v for v in vuelos if v.getId() == r["vueloId"]), None)
-                reserva = Reserva(pasajero, vuelo, r["tipoAsiento"])
+                reserva = Reserva(r["idPasajero"], r["idVuelo"], r["tipoAsiento"], id=r["id"])  # ← aquí se pasa el id
                 reserva.setEstado(r["estado"])  # Actualizamos el estado de la reserva
                 reservas.append(reserva)
+
 
     print("Datos cargados exitosamente.")

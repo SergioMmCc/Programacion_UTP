@@ -1,5 +1,5 @@
+from modelos import *
 import json, os
-from clases import *
 
 ############################ Listas ######################################
 aviones = []
@@ -100,3 +100,42 @@ def cargar():
 
 
     print("Datos cargados exitosamente.")
+
+
+############################## FUNCIONES PARA VALIDACIONES ##################################
+# Función para obtener un pasajero por ID
+def obtener_pasajero(id_pasajero):
+    return next((p for p in pasajeros if p.getId() == id_pasajero), None)
+
+# Función para obtener un avión por ID
+def obtener_avion(id_avion):
+    return next((a for a in aviones if a.getId() == id_avion), None)
+
+# Función para obtener un vuelo por ID
+def obtener_vuelo(id_vuelo):
+    return next((v for v in vuelos if v.getId() == id_vuelo), None)
+
+# Obtener reserva por su id
+def obtener_reserva(id_reserva):
+    return next((r for r in reservas if r.getId() == id_reserva), None)
+
+# Función para obtener una reserva activa por pasajero y vuelo
+def obtener_reserva_activa(id_pasajero, id_vuelo):
+    return next(
+        (r for r in reservas if r.getIdPasajero() == id_pasajero and r.getIdVuelo() == id_vuelo and r.getEstado() == "activa"),
+        None
+    )
+
+# Funcion para obtener el avión correspondiente a un vuelo
+def obtener_avion_por_vuelo(id_vuelo):
+    vuelo = obtener_vuelo(id_vuelo)
+    if vuelo is None:
+        return None
+    return obtener_avion(vuelo.getIdAvion())
+
+# Funcion para contar la cantidad de reservas activas de cierto vuelo
+def contar_reservas_activas(id_vuelo, tipo_asiento):
+    return sum(
+        1 for r in reservas
+        if r.getIdVuelo() == id_vuelo and r.getTipoAsiento() == tipo_asiento and r.getEstado() == "activa"
+    )

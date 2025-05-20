@@ -13,6 +13,9 @@ Limitaciones:
 - Todas las variables deben ser no negativas.
 - El problema debe tener solución acotada.
 
+Cabe resaltar que la solución podrá tener como coeficientes números decimales,
+es decir, no está limitada a entregar solo enteros.
+
 Ejemplo de uso:
 Maximizar Z = 3x + 5y
 Sujeto a:
@@ -22,27 +25,39 @@ Sujeto a:
 
 La solución óptima será:
     x = 0, y = 8/3, Z = 40/3 ≈ 13.33
-
-Cabe resaltar que la solución podrá tener como coeficiente numeros decimales, es decir,
-no esta limitada a entregar solo enteros
 """
-
 
 import numpy as np
 
 def simplex(c, A, b):
+    """
+    Aplica el método simplex para resolver un problema de maximización.
+
+    Parámetros:
+    - c: array de coeficientes de la función objetivo (longitud n).
+    - A: matriz de coeficientes de las restricciones (dimensión m x n).
+    - b: array de términos independientes de las restricciones (longitud m).
+
+    Retorna:
+    - x: solución óptima (valores de las variables).
+    - z: valor máximo de la función objetivo.
+    """
     m, n = A.shape
     tableau = np.zeros((m + 1, n + m + 1))
-    tableau[:m, :n] = A
-    tableau[:m, n:n + m] = np.eye(m)
-    tableau[:m, -1] = b
-    tableau[-1, :n] = -c
 
+    # Construcción del tableau
+    tableau[:m, :n] = A                     # Coeficientes de variables originales
+    tableau[:m, n:n + m] = np.eye(m)        # Variables de holgura
+    tableau[:m, -1] = b                     # Lado derecho
+    tableau[-1, :n] = -c                    # Función objetivo (negada)
+
+    # Iteraciones del método simplex
     while True:
-        col = np.argmin(tableau[-1, :-1])
+        col = np.argmin(tableau[-1, :-1])   # Buscar columna pivote (más negativa)
         if tableau[-1, col] >= 0:
-            break
+            break  # Óptimo alcanzado
 
+        # Determinar fila pivote (mínima razón)
         ratios = []
         for i in range(m):
             if tableau[i, col] > 0:
@@ -52,12 +67,15 @@ def simplex(c, A, b):
         row = np.argmin(ratios)
         if ratios[row] == np.inf:
             raise Exception("Solución no acotada")
+
+        # Operaciones para hacer el pivote igual a 1 y anular el resto de la columna
         pivot = tableau[row, col]
         tableau[row, :] /= pivot
         for i in range(m + 1):
             if i != row:
                 tableau[i, :] -= tableau[i, col] * tableau[row, :]
 
+    # Extraer solución
     x = np.zeros(n)
     for j in range(n):
         col = tableau[:m, j]
@@ -68,14 +86,19 @@ def simplex(c, A, b):
     return x, z
 
 
-# Pedir datos al usuario
-'''
-El usuario ingresa:
-- El número de variables y restricciones.
-- Los coeficientes de la función objetivo (Z).
-- Los coeficientes y términos independientes de las restricciones.
-'''
 def pedir_datos():
+    """
+    Solicita al usuario los datos necesarios para formular el problema:
+    - número de variables
+    - número de restricciones
+    - coeficientes de la función objetivo
+    - coeficientes y términos independientes de las restricciones
+
+    Retorna:
+    - c: array de coeficientes de la función objetivo
+    - A: matriz de coeficientes de restricciones
+    - b: array de términos independientes
+    """
     n = int(input("Número de variables: "))
     m = int(input("Número de restricciones: "))
 
@@ -95,7 +118,7 @@ def pedir_datos():
     return c, np.array(A), np.array(b)
 
 
-# Ejecución
+# Ejecución principal
 if __name__ == "__main__":
     c, A, b = pedir_datos()
     sol, z_max = simplex(c, A, b)

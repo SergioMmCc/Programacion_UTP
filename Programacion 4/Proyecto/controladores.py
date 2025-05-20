@@ -1,7 +1,6 @@
-from datetime import datetime
 from vistas import mostrar_vuelo, mostrar_reserva, mostrar_pasajero, mostrar_avion
-from modelos import ReservaEconomica, ReservaEjecutiva, Pasajero, Vuelo, Avion
 from persistencia import *
+from modelos import ReservaEjecutiva, ReservaEconomica
 
 ############################## FUNCIONES PARA CREAR INSTANCIAS #####################################
 # Funcion para crear un pasajero
@@ -143,12 +142,12 @@ def crear_reserva(id_pasajero, id_vuelo, tipo_asiento):
         if cantidad_actual >= avion.getCapacidadEconomica():
             print("No hay asientos disponibles en clase económica.")
             return None
-        reserva = ReservaEconomica(id_pasajero, id_vuelo)
+        reserva = ReservaEconomica(len(reservas) + 1, id_pasajero, id_vuelo)
     else:
         if cantidad_actual >= avion.getCapacidadEjecutiva():
             print("No hay asientos disponibles en clase ejecutiva.")
             return None
-        reserva = ReservaEjecutiva(id_pasajero, id_vuelo)
+        reserva = ReservaEjecutiva(len(reservas) + 1, id_pasajero, id_vuelo)
 
     reservas.append(reserva)
     guardar()
@@ -157,17 +156,17 @@ def crear_reserva(id_pasajero, id_vuelo, tipo_asiento):
 
 ############################## FUNCIONES PARA MANIPULAR RESERVAS ###################################
 # Funcion para cambiar una reserva de economica a ejecutiva
-def cambiar_a_ejecutiva(id_pasajero, id_vuelo):
-    # Buscar la reserva correspondiente
-    reserva = obtener_reserva_activa(id_pasajero, id_vuelo)
+def cambiar_a_ejecutiva(id_reserva):
+    reserva = obtener_reserva(id_reserva)
     if reserva is None:
-        print("No se encontró una reserva con esos datos.")
+        print("No se encontró una reserva con ese ID.")
         return
 
-    if reserva.getTipoAsiento() != "economica":
+    if reserva.getTipoAsiento() != "economico":
         print("La reserva no es de clase económica, no se puede cambiar.")
         return
 
+    id_vuelo = reserva.getIdVuelo()
     vuelo = obtener_vuelo(id_vuelo)
     if vuelo is None:
         print(f"No existe ningún vuelo asociado a esa reserva")
@@ -179,15 +178,13 @@ def cambiar_a_ejecutiva(id_pasajero, id_vuelo):
         return
 
     cantidad_actual = contar_reservas_activas(id_vuelo, "ejecutivo")
-
     if cantidad_actual >= avion.getCapacidadEjecutiva():
         print("No hay asientos ejecutivos disponibles.")
         return
 
-    # Cambiar la reserva
-    reserva.setTipoAsiento("ejecutiva")
+    reserva.setTipoAsiento("ejecutivo")
     guardar()
-    print(f"Reserva {reserva.getId()} del pasajero {id_pasajero} en el vuelo {id_vuelo} actualizada a clase ejecutiva.")
+    print(f"Reserva {reserva.getId()} actualizada a clase ejecutiva.")
 
 
 #################################### FUNCIONES PARA CONSULTAR VUELOS #################################

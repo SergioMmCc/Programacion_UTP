@@ -1,8 +1,4 @@
 # Sistema de manejo de vuelos de una aerolinea
-from datetime import datetime
-from controladores import existe_avion
-import uuid
-
 ###################################### CLASES ########################################
 class Pasajero:
     def __init__(self, id_pasajero, nombre, correo):
@@ -126,22 +122,17 @@ class Vuelo:
         return self.__precio_ejecutiva
 
 class Reserva:
-    def __init__(self, id_pasajero, id_vuelo, tipo_asiento, id=None):
+    def __init__(self, id, id_pasajero, id_vuelo, tipo_asiento):
+        self.setId(id)
         self.setIdPasajero(id_pasajero)
         self.setIdVuelo(id_vuelo)
         self.setTipoAsiento(tipo_asiento)
         self.__estado = "activa"
-        if id is None:
-            self.__id = self.generar_id_unico()
-        else:
-            self.__id = id
-
-
-    # Método para generar id único
-    def generar_id_unico(self):
-        return str(uuid.uuid4())
     
     # Métodos set
+    def setId(self, id):
+        self.__id = id
+
     def setIdPasajero(self, id_pasajero):
         self.__id_pasajero = id_pasajero
 
@@ -172,9 +163,9 @@ class Reserva:
 
 
 class ReservaEconomica(Reserva):
-    def __init__(self, id_pasajero, id_vuelo):
-        super().__init__(id_pasajero, id_vuelo, "economico")
+    def __init__(self, id_reserva, id_pasajero, id_vuelo):
+        super().__init__(id_reserva, id_pasajero, id_vuelo, "economico")
 
 class ReservaEjecutiva(Reserva):
-    def __init__(self, id_pasajero, id_vuelo):
-        super().__init__(id_pasajero, id_vuelo, "ejecutivo")
+    def __init__(self, id_reserva, id_pasajero, id_vuelo):
+        super().__init__(id_reserva, id_pasajero, id_vuelo, "ejecutivo")

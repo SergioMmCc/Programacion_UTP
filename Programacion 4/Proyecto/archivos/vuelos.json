@@ -1,0 +1,12 @@
+[
+    {
+        "id": 123456,
+        "idAvion": 1234,
+        "origen": "Pereira",
+        "destino": "Bogota",
+        "fechaHoraSalida": "2025-05-30 12:12:00",
+        "fechaHoraLlegada": "2025-05-30 13:07:00",
+        "precioEconomica": 200000.0,
+        "precioEjecutiva": 1000000.0
+    }
+]

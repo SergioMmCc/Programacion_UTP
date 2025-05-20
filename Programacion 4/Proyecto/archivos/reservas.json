@@ -1,0 +1,16 @@
+[
+    {
+        "id": 1,
+        "idPasajero": 1089380570,
+        "idVuelo": 123456,
+        "tipoAsiento": "ejecutivo",
+        "estado": "activa"
+    },
+    {
+        "id": 2,
+        "idPasajero": 123,
+        "idVuelo": 123456,
+        "tipoAsiento": "ejecutivo",
+        "estado": "activa"
+    }
+]

@@ -1,4 +1,5 @@
-from modelos import *
+from modelos import Avion, Pasajero, Vuelo, Reserva
+from datetime import datetime
 import json, os
 
 ############################ Listas ######################################
@@ -20,7 +21,7 @@ def guardar():
     # Guardamos los datos de los vuelos
     data_vuelos = [{
         "id": v.getId(),
-        "avionId": v.getIdAvion(),  # Guardamos el id del avión, no el objeto completo
+        "idAvion": v.getIdAvion(),
         "origen": v.getOrigen(),
         "destino": v.getDestino(),
         "fechaHoraSalida": v.getFechaHoraSalida().strftime("%Y-%m-%d %H:%M:%S"),
@@ -39,8 +40,8 @@ def guardar():
     # Guardamos los datos de las reservas
     data_reservas = [{
         "id": r.getId(),  # Nuevo campo: ID único de la reserva
-        "pasajeroId": r.getIdPasajero(),
-        "vueloId": r.getIdVuelo(),
+        "idPasajero": r.getIdPasajero(),
+        "idVuelo": r.getIdVuelo(),
         "tipoAsiento": r.getTipoAsiento(),
         "estado": r.getEstado()
     } for r in reservas]
@@ -94,7 +95,7 @@ def cargar():
     if os.path.exists("archivos/reservas.json"):
         with open("archivos/reservas.json", "r", encoding="utf-8") as f:
             for r in json.load(f):
-                reserva = Reserva(r["idPasajero"], r["idVuelo"], r["tipoAsiento"], id=r["id"])  # ← aquí se pasa el id
+                reserva = Reserva(r["id"], r["idPasajero"], r["idVuelo"], r["tipoAsiento"])  # ← aquí se pasa el id
                 reserva.setEstado(r["estado"])  # Actualizamos el estado de la reserva
                 reservas.append(reserva)
 
